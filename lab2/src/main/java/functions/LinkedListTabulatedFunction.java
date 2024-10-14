@@ -1,6 +1,6 @@
 package functions;
 
-public class LinkedListTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable,Removable {
+public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements TabulatedFunction, Insertable,Removable {
 
     class Node {
         public Node next;

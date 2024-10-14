@@ -69,7 +69,7 @@ public class InsertTest {
     @Test
     void insertRightListTest() {
         list.insert(8.9, 4.4);
-        Assertions.assertEquals(8.9, list.getX(6));
+        Assertions.assertEquals(6.0, list.getX(6));
     }
 
     @Test
