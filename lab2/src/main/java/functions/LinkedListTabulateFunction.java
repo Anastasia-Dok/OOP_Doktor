@@ -1,5 +1,7 @@
 package functions;
 import exceptions.InterpolationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class LinkedListTabulateFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable,Removable {
 
@@ -174,6 +176,30 @@ public class LinkedListTabulateFunction extends AbstractTabulateFunction impleme
         }
         return interpolate(x, floorNode.x, floorNode.next.x, floorNode.y, floorNode.next.y);
     }
+    public Iterator<Point> iterator() {
+        return new Iterator<Point>() {
+            private Node node = head;
+
+            @Override
+            public boolean hasNext() {
+                return !(node == null);
+            }
+
+            @Override
+            public Point next() {
+                if (hasNext()) {
+                    Point p = new Point(node.x, node.y);
+                    if (node.next == head)
+                        node = null;
+                    else
+                        node = node.next;
+                    return p;
+                }
+                throw new NoSuchElementException();
+            }
+        };
+    }
+
 
     public int indexOfY(double y) {
         Node cur = head;

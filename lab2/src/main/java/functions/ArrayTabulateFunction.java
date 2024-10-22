@@ -1,6 +1,8 @@
 package functions;
 import exceptions.InterpolationException;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayTabulateFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable {
     protected double[] arrX;
@@ -38,6 +40,24 @@ public class ArrayTabulateFunction extends AbstractTabulateFunction implements T
 
     public double getY(int index) {
         return arrY[index];
+    }
+    public Iterator<Point> iterator() {
+        return new Iterator() {
+            private int i = 0;
+
+            @Override
+            public boolean hasNext() {
+                return i < count;
+            }
+
+            @Override
+            public Point next() {
+                if (!hasNext()) throw new NoSuchElementException();
+                Point point = new Point(arrX[i], arrY[i]);
+                i++;
+                return point;
+            }
+        };
     }
 
     public void setY(int index, double value) {
