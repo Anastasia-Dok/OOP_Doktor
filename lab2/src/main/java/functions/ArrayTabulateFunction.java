@@ -1,25 +1,19 @@
 package functions;
-import exceptions.InterpolationException;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Iterator;
 
 public class ArrayTabulateFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable {
     protected double[] arrX;
     protected double[] arrY;
 
     public ArrayTabulateFunction(double[] xValues, double[] yValues) {
-        checkLengthIsTheSame(xValues, yValues);
-        if (xValues.length <= 1) throw new IllegalArgumentException("xValues length must be greater than 1");
-        checkSorted(xValues);
         count = xValues.length;
         arrX = Arrays.copyOf(xValues, xValues.length);
         arrY = Arrays.copyOf(yValues, yValues.length);
     }
 
     public ArrayTabulateFunction(MathFunction source, double xFrom, double xTo, int count) {
-        if (count < 2)
-            throw new IllegalArgumentException("The count of the X points must be 2 at least");
         if (xFrom > xTo) {
             double temp = xFrom;
             xFrom = xTo;
@@ -89,7 +83,7 @@ public class ArrayTabulateFunction extends AbstractTabulateFunction implements T
     }
 
     protected int floorIndexOfX(double x) {
-        if (x < arrX[0]) throw new IllegalArgumentException("x less than left bound of array");
+
         if (x > arrX[count - 1]) return count;
         if (indexOfX(x) != -1) return indexOfX(x);
         int index = 0;
@@ -113,8 +107,6 @@ public class ArrayTabulateFunction extends AbstractTabulateFunction implements T
 
     @Override
     protected double interpolate(double x, int floorIndex) {
-        if (x < arrX[floorIndex] || x > arrX[floorIndex + 1])
-            throw new InterpolationException("Failed interpolation with 2 parameters");
         return interpolate(x, arrX[floorIndex], arrX[floorIndex + 1], arrY[floorIndex], arrY[floorIndex + 1]);
     }
 

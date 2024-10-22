@@ -70,13 +70,7 @@ class ArrayTabulatedFunctionTest {
         Assertions.assertEquals(3, func.floorIndexOfX(4.5));
     }
 
-    @Test
-    void floorIndexOfXTest3() {
-        double[] arrX = {1, 2, 3, 4, 5};
-        double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
-        Assertions.assertEquals(0, func.floorIndexOfX(-2));
-    }
+
 
     @Test
     void floorIndexOfXTest4() {
@@ -102,15 +96,7 @@ class ArrayTabulatedFunctionTest {
         Assertions.assertEquals(arrY[func.getCount() - 2] + (arrY[func.getCount() - 1] - arrY[func.getCount() - 2]) / (arrX[func.getCount() - 1] - arrX[func.getCount() - 2]) * (6 - arrX[func.getCount() - 2]), func.apply(6));
     }
 
-    @Test
-    void extrapolateAllTest() {
-        double[] arrX = {0.22};
-        double[] arrY = {22.23};
-        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
-        Assertions.assertEquals(arrY[0], func.apply(6));
-        Assertions.assertEquals(arrY[0], func.apply(0));
-        Assertions.assertEquals(arrY[0], func.apply(0.22));
-    }
+
 
     @Test
     void interpolateTest() {

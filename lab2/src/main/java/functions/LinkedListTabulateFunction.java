@@ -1,5 +1,5 @@
 package functions;
-import exceptions.InterpolationException;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -41,10 +41,7 @@ public class LinkedListTabulateFunction extends AbstractTabulateFunction impleme
     }
 
     protected Node getNode(int index) {
-        if (index < 0)
-            throw new IllegalArgumentException("Index can't be less than zero");
-        if (index > count)
-            throw new IllegalArgumentException("Index can't be more than length");
+
         Node cur = head;
         if (index < count / 2) {
             for (int i = 0; i < index; ++i)
@@ -57,8 +54,7 @@ public class LinkedListTabulateFunction extends AbstractTabulateFunction impleme
     }
 
     protected Node floorNodeOfX(double x) {
-        if (x < head.x)
-            throw new IllegalArgumentException("x less than left bound of the list");
+
         Node cur = head;
         if (head.x >= x) return head;
         do {
@@ -70,17 +66,13 @@ public class LinkedListTabulateFunction extends AbstractTabulateFunction impleme
     }
 
     public LinkedListTabulateFunction(double[] xValues, double[] yValues) {
-        checkLengthIsTheSame(xValues, yValues);
-        if (xValues.length < 2) throw new IllegalArgumentException("The count of the X points must be 2 at least");
-        checkSorted(xValues);
         for (int i = 0; i < xValues.length; ++i) {
             addNode(xValues[i], yValues[i]);
         }
     }
 
     public LinkedListTabulateFunction(MathFunction source, double xFrom, double xTo, int count) {
-        if (count < 2)
-            throw new IllegalArgumentException("The count of the points must be 2 at least");
+
         if (xFrom > xTo) {
             xFrom = xFrom + xTo;
             xTo = xFrom - xTo;
@@ -111,32 +103,22 @@ public class LinkedListTabulateFunction extends AbstractTabulateFunction impleme
     }
 
     public double getX(int index) {
-        if (index < 0)
-            throw new IllegalArgumentException("Index can't be less than zero");
-        if (index > count)
-            throw new IllegalArgumentException("Index can't be more than length");
+
         return getNode(index).x;
     }
 
     public double getY(int index) {
-        if (index < 0)
-            throw new IllegalArgumentException("Index can't be less than zero");
-        if (index > count)
-            throw new IllegalArgumentException("Index can't be more than length");
+
         return getNode(index).y;
     }
 
     public void setY(int index, double y) {
-        if (index < 0)
-            throw new IllegalArgumentException("Index can't be less than zero");
-        if (index > count)
-            throw new IllegalArgumentException("Index can't be more than length");
+
         getNode(index).y = y;
     }
 
     public int indexOfX(double x) {
-        if (x < head.x)
-            throw new IllegalArgumentException("x less than left bound of the list");
+
         Node cur = head;
         int i = 0;
         do {
@@ -171,9 +153,7 @@ public class LinkedListTabulateFunction extends AbstractTabulateFunction impleme
 
     protected double interpolate(double x, int floorIndex) {
         Node floorNode = getNode(floorIndex);
-        if (x < floorNode.x || x > floorNode.next.x) {
-            throw new InterpolationException("Failed interpolation with 2 parameters");
-        }
+
         return interpolate(x, floorNode.x, floorNode.next.x, floorNode.y, floorNode.next.y);
     }
     public Iterator<Point> iterator() {
@@ -267,10 +247,7 @@ public class LinkedListTabulateFunction extends AbstractTabulateFunction impleme
     }
 
     public void remove(int index) {
-        if (index < 0)
-            throw new IllegalArgumentException("Index can't be less than zero");
-        if (index > count)
-            throw new IllegalArgumentException("Index can't be more than length");
+
         Node remNode = getNode(index);
         remNode.prev.next = remNode.next;
         remNode.next.prev = remNode.prev;
