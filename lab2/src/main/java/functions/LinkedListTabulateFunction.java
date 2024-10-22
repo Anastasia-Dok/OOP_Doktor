@@ -1,5 +1,7 @@
 package functions;
 
+import exceptions.InterpolationException;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -66,6 +68,8 @@ public class LinkedListTabulateFunction extends AbstractTabulateFunction impleme
     }
 
     public LinkedListTabulateFunction(double[] xValues, double[] yValues) {
+        checkLengthIsTheSame(xValues, yValues);
+        checkSorted(xValues);
         for (int i = 0; i < xValues.length; ++i) {
             addNode(xValues[i], yValues[i]);
         }
@@ -151,10 +155,21 @@ public class LinkedListTabulateFunction extends AbstractTabulateFunction impleme
     }
 
 
+    @Override
     protected double interpolate(double x, int floorIndex) {
         Node floorNode = getNode(floorIndex);
 
+        if (x < floorNode.x || x > floorNode.next.x) {
+            throw new InterpolationException("Failed interpolation with 2 parameters");
+        }
+
         return interpolate(x, floorNode.x, floorNode.next.x, floorNode.y, floorNode.next.y);
+    }
+    protected double interpolate(double x, Node floor) {
+        if (x < floor.x || x > floor.next.x) {
+            throw new InterpolationException("x is out of interpolation bounds");
+        }
+        return interpolate(x, floor.x, floor.next.x, floor.y, floor.next.y);
     }
     public Iterator<Point> iterator() {
         return new Iterator<Point>() {

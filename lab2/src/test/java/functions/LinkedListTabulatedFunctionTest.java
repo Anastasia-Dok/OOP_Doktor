@@ -3,7 +3,11 @@ package functions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import exceptions.InterpolationException;
 import java.util.Iterator;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class LinkedListTabulatedFunctionTest {
     private LinkedListTabulateFunction list;
@@ -206,5 +210,14 @@ public class LinkedListTabulatedFunctionTest {
         }
         Assertions.assertArrayEquals(a, arrx);
         Assertions.assertArrayEquals(b, arry);
+    }
+    @Test
+    void interpolationExceptionTest() {
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {4.0, 5.0, 6.0};
+
+        LinkedListTabulateFunction linkedListFunction = new LinkedListTabulateFunction(xValues, yValues);
+        assertThrows(InterpolationException.class,
+                () -> linkedListFunction.interpolate(3.5, linkedListFunction.floorNodeOfX(1)));
     }
 }

@@ -1,7 +1,13 @@
 package functions;
 
+import exceptions.ArrayIsNotSortedException;
+import exceptions.DifferentLengthOfArraysException;
+import exceptions.InterpolationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 
 
 class ArrayTabulatedFunctionTest {
@@ -71,7 +77,6 @@ class ArrayTabulatedFunctionTest {
     }
 
 
-
     @Test
     void floorIndexOfXTest4() {
         double[] arrX = {1, 2, 3, 4, 5};
@@ -85,7 +90,7 @@ class ArrayTabulatedFunctionTest {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
-        Assertions.assertEquals(arrY[0] + (arrY[1] - arrY[0]) / (arrX[1] - arrX[0]) * (-1 - arrX[0]),func.apply(-1) );
+        Assertions.assertEquals(arrY[0] + (arrY[1] - arrY[0]) / (arrX[1] - arrX[0]) * (-1 - arrX[0]), func.apply(-1));
     }
 
     @Test
@@ -97,14 +102,13 @@ class ArrayTabulatedFunctionTest {
     }
 
 
-
     @Test
     void interpolateTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         int floorIndex = func.floorIndexOfX(4.5);
-        Assertions.assertEquals( arrY[floorIndex] + (arrY[floorIndex + 1] - arrY[floorIndex]) / (arrX[floorIndex + 1] - arrX[floorIndex]) * (4.5 - arrX[floorIndex]), func.apply(4.5));
+        Assertions.assertEquals(arrY[floorIndex] + (arrY[floorIndex + 1] - arrY[floorIndex]) / (arrX[floorIndex + 1] - arrX[floorIndex]) * (4.5 - arrX[floorIndex]), func.apply(4.5));
     }
 
     @Test
@@ -181,4 +185,51 @@ class ArrayTabulatedFunctionTest {
         Assertions.assertEquals(4, func.getX(func.getCount() - 1));
     }
 
+    @Test
+    public void testInterpolate_ValidInterval() {
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {4.0, 5.0, 6.0};
+        ArrayTabulateFunction function = new ArrayTabulateFunction(xValues, yValues);
+
+        // Проверка корректного результата интерполяции
+        assertEquals(4.5, function.interpolate(1.5, 0), 0.0001);
+    }
+
+    @Test
+    public void testInterpolate_xOutsideInterval() {
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {4.0, 5.0, 6.0};
+        ArrayTabulateFunction function = new ArrayTabulateFunction(xValues, yValues);
+
+        // x за пределами интервала [xValues[floorIndex], xValues[floorIndex + 1]]
+        assertThrows(InterpolationException.class, () -> function.interpolate(2.5, 0));
+    }
+
+
+    @Test
+    public void testCheckLengthIsTheSame_DifferentLength() {
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {4.0, 5.0};
+        assertThrows(DifferentLengthOfArraysException.class, () ->
+                new ArrayTabulateFunction(xValues, yValues)
+        );
+    }
+
+    @Test
+    void testInterpolationException() {
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {4.0, 5.0, 6.0};
+
+        LinkedListTabulateFunction linkedListFunction = new LinkedListTabulateFunction(xValues, yValues);
+        assertThrows(InterpolationException.class,
+                () -> linkedListFunction.interpolate(3.5, linkedListFunction.floorNodeOfX(1)));
+    }    @Test
+    public void testCheckSorted_UnsortedArray() {
+        double[] xValues = {1.0, 3.0, 2.0};
+        double[] yValues = {4.0, 5.0, 6.0};
+        assertThrows(ArrayIsNotSortedException.class, () ->
+                new ArrayTabulateFunction(xValues, yValues)
+        );
+
+    }
 }
