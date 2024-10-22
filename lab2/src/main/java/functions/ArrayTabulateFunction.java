@@ -43,7 +43,7 @@ public class ArrayTabulateFunction extends AbstractTabulateFunction implements T
         return arrY[index];
     }
     public Iterator<Point> iterator() {
-        return new Iterator() {
+        return new Iterator<Point>() {
             private int i = 0;
 
             @Override

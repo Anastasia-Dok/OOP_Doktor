@@ -6,6 +6,8 @@ import exceptions.InterpolationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -231,5 +233,20 @@ class ArrayTabulatedFunctionTest {
                 new ArrayTabulateFunction(xValues, yValues)
         );
 
+    }
+    @Test
+    public void testArrayIteratorWithWhile() {
+        ArrayTabulateFunction function = new ArrayTabulateFunction(new double[]{1.0, 2.0, 3.0}, new double[]{10.0, 20.0, 30.0});
+        Iterator<Point> iterator = function.iterator();
+        int index = 0;
+
+        while (iterator.hasNext()) {
+            Point point = iterator.next();
+            assertEquals(function.getX(index), point.x, 1e-9);
+            assertEquals(function.getY(index), point.y, 1e-9);
+            index++;
+        }
+
+        assertEquals(function.getCount(), index);
     }
 }
