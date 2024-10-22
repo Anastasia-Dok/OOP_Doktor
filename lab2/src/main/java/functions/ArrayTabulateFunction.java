@@ -1,18 +1,23 @@
 package functions;
-
+import exceptions.InterpolationException;
 import java.util.Arrays;
 
-public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements TabulatedFunction, Insertable, Removable {
+public class ArrayTabulateFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable {
     protected double[] arrX;
     protected double[] arrY;
 
-    public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
+    public ArrayTabulateFunction(double[] xValues, double[] yValues) {
+        checkLengthIsTheSame(xValues, yValues);
+        if (xValues.length <= 1) throw new IllegalArgumentException("xValues length must be greater than 1");
+        checkSorted(xValues);
         count = xValues.length;
         arrX = Arrays.copyOf(xValues, xValues.length);
         arrY = Arrays.copyOf(yValues, yValues.length);
     }
 
-    public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
+    public ArrayTabulateFunction(MathFunction source, double xFrom, double xTo, int count) {
+        if (count < 2)
+            throw new IllegalArgumentException("The count of the X points must be 2 at least");
         if (xFrom > xTo) {
             double temp = xFrom;
             xFrom = xTo;
@@ -64,7 +69,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     }
 
     protected int floorIndexOfX(double x) {
-        if (x < arrX[0]) return 0;
+        if (x < arrX[0]) throw new IllegalArgumentException("x less than left bound of array");
         if (x > arrX[count - 1]) return count;
         if (indexOfX(x) != -1) return indexOfX(x);
         int index = 0;
@@ -78,19 +83,21 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     }
 
     protected double extrapolateLeft(double x) {
-        if (count == 1) return arrY[0];
-        return arrY[0] + (arrY[1] - arrY[0]) / (arrX[1] - arrX[0]) * (x - arrX[0]);
+        return interpolate(x, arrX[0], arrX[1], arrY[0], arrY[1]);
     }
 
+    @Override
     protected double extrapolateRight(double x) {
-        if (count == 1) return arrY[0];
-        return arrY[count - 2] + (arrY[count - 1] - arrY[count - 2]) / (arrX[count - 1] - arrX[count - 2]) * (x - arrX[count - 2]);
+        return interpolate(x, arrX[count - 2], arrX[count - 1], arrY[count - 2], arrY[count - 1]);
     }
 
+    @Override
     protected double interpolate(double x, int floorIndex) {
-        if (count == 1) return arrY[0];
-        return arrY[floorIndex] + (arrY[floorIndex + 1] - arrY[floorIndex]) / (arrX[floorIndex + 1] - arrX[floorIndex]) * (x - arrX[floorIndex]);
+        if (x < arrX[floorIndex] || x > arrX[floorIndex + 1])
+            throw new InterpolationException("Failed interpolation with 2 parameters");
+        return interpolate(x, arrX[floorIndex], arrX[floorIndex + 1], arrY[floorIndex], arrY[floorIndex + 1]);
     }
+
 
     public void insert(double x, double y) {
         ++count;

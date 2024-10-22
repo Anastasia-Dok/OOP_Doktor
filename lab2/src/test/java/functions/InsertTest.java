@@ -5,15 +5,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class InsertTest {
-    private ArrayTabulatedFunction arr;
-    private LinkedListTabulatedFunction list;
+    private ArrayTabulateFunction arr;
+    private LinkedListTabulateFunction list;
     private double[] arrX = new double[]{1, 2, 3, 4, 5, 6};
     private double[] arrY = new double[]{1, 2, 3, 4, 5, 6};
 
     @BeforeEach
     void createArr() {
-        arr = new ArrayTabulatedFunction(arrX, arrY);
-        list = new LinkedListTabulatedFunction(arrX, arrY);
+        arr = new ArrayTabulateFunction(arrX, arrY);
+        list = new LinkedListTabulateFunction(arrX, arrY);
     }
 
     @Test
@@ -63,7 +63,9 @@ public class InsertTest {
     @Test
     void insertLeftListTest() {
         list.insert(0, 3.6);
+
         Assertions.assertEquals(0, list.getX(0));
+
     }
 
     @Test

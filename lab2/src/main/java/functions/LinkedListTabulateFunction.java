@@ -1,8 +1,9 @@
 package functions;
+import exceptions.InterpolationException;
 
-public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements TabulatedFunction, Insertable,Removable {
+public class LinkedListTabulateFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable,Removable {
 
-    class Node {
+    static class Node {
         public Node next;
         public Node prev;
         public double x;
@@ -37,38 +38,47 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         ++count;
     }
 
-    private Node getNode(int index) {
+    protected Node getNode(int index) {
+        if (index < 0)
+            throw new IllegalArgumentException("Index can't be less than zero");
+        if (index > count)
+            throw new IllegalArgumentException("Index can't be more than length");
         Node cur = head;
         if (index < count / 2) {
             for (int i = 0; i < index; ++i)
                 cur = cur.next;
         } else {
-            for (int i = count - 1; i >= index; --i) // подумать
+            for (int i = count - 1; i >= index; --i)
                 cur = cur.prev;
-
         }
         return cur;
     }
 
     protected Node floorNodeOfX(double x) {
+        if (x < head.x)
+            throw new IllegalArgumentException("x less than left bound of the list");
         Node cur = head;
-        int i = 0;
+        if (head.x >= x) return head;
         do {
             if (cur.x >= x)
-                return i == 0 ? getNode(0) : getNode(i - 1);
-            ++i;
+                return cur.prev;
             cur = cur.next;
         } while (cur != head);
-        return getNode(count);
+        return head;
     }
 
-    public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
+    public LinkedListTabulateFunction(double[] xValues, double[] yValues) {
+        checkLengthIsTheSame(xValues, yValues);
+        if (xValues.length < 2) throw new IllegalArgumentException("The count of the X points must be 2 at least");
+        checkSorted(xValues);
         for (int i = 0; i < xValues.length; ++i) {
             addNode(xValues[i], yValues[i]);
         }
     }
 
-    public LinkedListTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
+    public LinkedListTabulateFunction(MathFunction source, double xFrom, double xTo, int count) {
+        if (count < 2)
+            throw new IllegalArgumentException("The count of the points must be 2 at least");
         if (xFrom > xTo) {
             xFrom = xFrom + xTo;
             xTo = xFrom - xTo;
@@ -99,18 +109,32 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     }
 
     public double getX(int index) {
+        if (index < 0)
+            throw new IllegalArgumentException("Index can't be less than zero");
+        if (index > count)
+            throw new IllegalArgumentException("Index can't be more than length");
         return getNode(index).x;
     }
 
     public double getY(int index) {
+        if (index < 0)
+            throw new IllegalArgumentException("Index can't be less than zero");
+        if (index > count)
+            throw new IllegalArgumentException("Index can't be more than length");
         return getNode(index).y;
     }
 
     public void setY(int index, double y) {
+        if (index < 0)
+            throw new IllegalArgumentException("Index can't be less than zero");
+        if (index > count)
+            throw new IllegalArgumentException("Index can't be more than length");
         getNode(index).y = y;
     }
 
     public int indexOfX(double x) {
+        if (x < head.x)
+            throw new IllegalArgumentException("x less than left bound of the list");
         Node cur = head;
         int i = 0;
         do {
@@ -135,22 +159,20 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     }
 
     protected double extrapolateLeft(double x) {
-        if (count == 1)
-            return head.y;
-        return getNode(0).y + (getNode(1).y - getNode(0).y) / (getNode(1).x - getNode(0).x) * (x - getNode(0).x);
-
+        return interpolate(x, head.x, head.next.x, head.y, head.next.y);
     }
 
     protected double extrapolateRight(double x) {
-        if (count == 1)
-            return head.y;
-        return getNode(count - 2).y + (getNode(count - 1).y - getNode(count - 2).y) / (getNode(count - 1).x - getNode(count - 2).x) * (x - getNode(count - 2).x);
+        return interpolate(x, head.prev.prev.x, head.prev.x, head.prev.prev.y, head.prev.y);
     }
 
+
     protected double interpolate(double x, int floorIndex) {
-        if (count == 1)
-            return head.y;
-        return getNode(floorIndex).y + (getNode(floorIndex + 1).y - getNode(floorIndex).y) / (getNode(floorIndex + 1).x - getNode(floorIndex).x) * (x - getNode(floorIndex).x);
+        Node floorNode = getNode(floorIndex);
+        if (x < floorNode.x || x > floorNode.next.x) {
+            throw new InterpolationException("Failed interpolation with 2 parameters");
+        }
+        return interpolate(x, floorNode.x, floorNode.next.x, floorNode.y, floorNode.next.y);
     }
 
     public int indexOfY(double y) {
@@ -183,56 +205,62 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     public void insert(double x, double y) {
         if (head == null) {
             addNode(x, y);
-            count++;// инсерт уже есть в адд
             return;
         }
+
+        if (x < head.x) {
+            Node newNode = new Node(x, y);
+            newNode.next = head;
+            newNode.prev = head.prev;
+            newNode.prev.next = newNode;
+            head.prev = newNode;
+            head = newNode;
+            count++;
+            return;
+        }
+
         Node cur = head;
-        while (cur.next != head.prev) {
+        do {
+
+            cur = cur.next;
             if (cur.x > x) {
                 Node newNode = new Node(x, y);
                 newNode.next = cur;
                 newNode.prev = cur.prev;
-                cur.prev.next = newNode;
+                newNode.prev.next = newNode;
                 cur.prev = newNode;
-                head = newNode;
-                count++;
-            }
-            if (cur.next.x > x) {
-                Node newNode = new Node(x, y);
-                newNode.next = cur.next;
-                newNode.prev = cur;
-                cur.next = newNode;
-                newNode.next.prev = newNode;
-                count++;
-                return;
-            } else if (cur.next.x == x) {
-                cur.next.y = y;
+                break;
+            } else if (cur.x == x) {
+                cur.y = y;
                 return;
             }
-            cur = cur.next;
-        }
-        if (cur.x > x) {
-            Node newNode = new Node(x, y);
-            newNode.next = cur;
-            newNode.prev = cur.prev;
-            cur.prev.next = newNode;
-            cur.prev = newNode;
-            head = newNode;
-            count++;
-        } else if (cur.x < x) {
-            addNode(x, y);
-            count++;
-        } else if (cur.x == x) {
-            cur.y = y;
-        }
+        } while (cur != head);
+
+        count++;
+
     }
-    public void remove(int index)
-    {
+
+    public void remove(int index) {
+        if (index < 0)
+            throw new IllegalArgumentException("Index can't be less than zero");
+        if (index > count)
+            throw new IllegalArgumentException("Index can't be more than length");
         Node remNode = getNode(index);
         remNode.prev.next = remNode.next;
         remNode.next.prev = remNode.prev;
-        if(head == remNode)
+        if (head == remNode)
             head = remNode.next;
         --count;
     }
+
+//    public void printList(){
+//    Node current = head;
+//        do
+//
+//    {
+//        System.out.print("x = " + current.x + " y = " + current.y + " | ");
+//        current = current.next;
+//    } while(current !=head);
+//    }
+
 }

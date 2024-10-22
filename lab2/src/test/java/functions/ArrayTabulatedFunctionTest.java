@@ -10,7 +10,7 @@ class ArrayTabulatedFunctionTest {
     void indexOfXTest1() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(4, func.indexOfX(5));
     }
 
@@ -18,7 +18,7 @@ class ArrayTabulatedFunctionTest {
     void indexOfXTest2() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(-1, func.indexOfX(6));
     }
 
@@ -26,7 +26,7 @@ class ArrayTabulatedFunctionTest {
     void indexOfYTest1() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(-1, func.indexOfY(6));
     }
 
@@ -34,7 +34,7 @@ class ArrayTabulatedFunctionTest {
     void indexOfYTest2() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(1, func.indexOfY(2));
     }
 
@@ -42,7 +42,7 @@ class ArrayTabulatedFunctionTest {
     void leftBoundTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(1, func.leftBound());
     }
 
@@ -50,7 +50,7 @@ class ArrayTabulatedFunctionTest {
     void rightBoundTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(5, func.rightBound());
     }
 
@@ -58,7 +58,7 @@ class ArrayTabulatedFunctionTest {
     void floorIndexOfXTest1() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(4, func.floorIndexOfX(5));
     }
 
@@ -66,7 +66,7 @@ class ArrayTabulatedFunctionTest {
     void floorIndexOfXTest2() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(3, func.floorIndexOfX(4.5));
     }
 
@@ -74,7 +74,7 @@ class ArrayTabulatedFunctionTest {
     void floorIndexOfXTest3() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(0, func.floorIndexOfX(-2));
     }
 
@@ -82,7 +82,7 @@ class ArrayTabulatedFunctionTest {
     void floorIndexOfXTest4() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(func.getCount(), func.floorIndexOfX(6));
     }
 
@@ -90,7 +90,7 @@ class ArrayTabulatedFunctionTest {
     void extrapolateLeftTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(arrY[0] + (arrY[1] - arrY[0]) / (arrX[1] - arrX[0]) * (-1 - arrX[0]),func.apply(-1) );
     }
 
@@ -98,7 +98,7 @@ class ArrayTabulatedFunctionTest {
     void extrapolateRightTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(arrY[func.getCount() - 2] + (arrY[func.getCount() - 1] - arrY[func.getCount() - 2]) / (arrX[func.getCount() - 1] - arrX[func.getCount() - 2]) * (6 - arrX[func.getCount() - 2]), func.apply(6));
     }
 
@@ -106,7 +106,7 @@ class ArrayTabulatedFunctionTest {
     void extrapolateAllTest() {
         double[] arrX = {0.22};
         double[] arrY = {22.23};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(arrY[0], func.apply(6));
         Assertions.assertEquals(arrY[0], func.apply(0));
         Assertions.assertEquals(arrY[0], func.apply(0.22));
@@ -116,7 +116,7 @@ class ArrayTabulatedFunctionTest {
     void interpolateTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         int floorIndex = func.floorIndexOfX(4.5);
         Assertions.assertEquals( arrY[floorIndex] + (arrY[floorIndex + 1] - arrY[floorIndex]) / (arrX[floorIndex + 1] - arrX[floorIndex]) * (4.5 - arrX[floorIndex]), func.apply(4.5));
     }
@@ -125,7 +125,7 @@ class ArrayTabulatedFunctionTest {
     void getXTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(4, func.getX(3));
     }
 
@@ -133,7 +133,7 @@ class ArrayTabulatedFunctionTest {
     void getYTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         Assertions.assertEquals(3, func.getX(2));
     }
 
@@ -141,14 +141,14 @@ class ArrayTabulatedFunctionTest {
     void setYTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         func.setY(2, 5);
         Assertions.assertEquals(5, func.getY(2));
     }
 
     @Test
     void constructFunction() {
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(new SqrFunction(), 0, 5, 6);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(new SqrFunction(), 0, 5, 6);
         boolean b = false;
         for (int i = 0; i < func.getCount(); i++) {
             if (func.getY(i) != i * i && func.getX(i) != i)
@@ -159,7 +159,7 @@ class ArrayTabulatedFunctionTest {
 
     @Test
     void constructFunction2() {
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(new SqrFunction(), 5, 0, 6);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(new SqrFunction(), 5, 0, 6);
         boolean b = false;
         for (int i = 0; i < func.getCount(); i++) {
             if (func.getY(i) != i * i && func.getX(i) != i)
@@ -172,7 +172,7 @@ class ArrayTabulatedFunctionTest {
     void removeTest1() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         func.remove(2);
         Assertions.assertEquals(4, func.getX(2));
     }
@@ -181,7 +181,7 @@ class ArrayTabulatedFunctionTest {
     void removeTest2() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         func.remove(0);
         Assertions.assertEquals(2, func.getX(0));
     }
@@ -190,7 +190,7 @@ class ArrayTabulatedFunctionTest {
     void removeTest3() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         func.remove(func.getCount() - 1);
         Assertions.assertEquals(4, func.getX(func.getCount() - 1));
     }
