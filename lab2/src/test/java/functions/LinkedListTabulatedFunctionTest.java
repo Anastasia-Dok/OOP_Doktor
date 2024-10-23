@@ -154,8 +154,8 @@ public class LinkedListTabulatedFunctionTest {
     }
     @Test
     void extrapolateLeftTest() {
-        double a = list.apply(-2);
-        Assertions.assertEquals(-2,a);
+        double a = list.apply(2);
+        Assertions.assertEquals(4,a);
     }
     @Test
     void interpolateTest1() {

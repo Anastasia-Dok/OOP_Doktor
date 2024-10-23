@@ -3,6 +3,7 @@ package operations;
 import functions.ArrayTabulateFunction;
 import functions.LinkedListTabulateFunction;
 import functions.Point;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,4 +37,6 @@ public class TabulatedFunctionOperationServiceTest {
         assertEquals(new Point(2.0, 5.0), points[1]);
         assertEquals(new Point(3.0, 6.0), points[2]);
     }
+
+
 }
