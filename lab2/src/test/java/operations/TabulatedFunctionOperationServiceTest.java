@@ -41,6 +41,35 @@ public class TabulatedFunctionOperationServiceTest {
     }
 
     @Test
+    public void testAddWithSameFunctionTypes() {
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValuesA = {4.0, 5.0, 6.0};
+        double[] yValuesB = {7.0, 8.0, 9.0};
+        TabulatedFunctionFactory factory = new ArrayTabulatedFunctionFactory();
+        TabulatedFunctionOperationService service = new TabulatedFunctionOperationService(factory);
+        ArrayTabulateFunction functionA = new ArrayTabulateFunction(xValues, yValuesA);
+        ArrayTabulateFunction functionB = new ArrayTabulateFunction(xValues, yValuesB);
+        TabulatedFunction result = service.add(functionA, functionB);
+        assertEquals(11.0, result.apply(1.0), 0.0001);
+        assertEquals(13.0, result.apply(2.0), 0.0001);
+        assertEquals(15.0, result.apply(3.0), 0.0001);
+    }
+    @Test
+    public void testSubstractWithSameFunctionTypes() {
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValuesA = {8.0, 15.0, 60.0};
+        double[] yValuesB = {2.0, 3.0, 10.0};
+        TabulatedFunctionFactory factory = new ArrayTabulatedFunctionFactory();
+        TabulatedFunctionOperationService service = new TabulatedFunctionOperationService(factory);
+        ArrayTabulateFunction functionA = new ArrayTabulateFunction(xValues, yValuesA);
+        ArrayTabulateFunction functionB = new ArrayTabulateFunction(xValues, yValuesB);
+        TabulatedFunction result = service.subtract(functionA, functionB);
+        assertEquals(6.0, result.apply(1.0), 0.0001);
+        assertEquals(12.0, result.apply(2.0), 0.0001);
+        assertEquals(50.0, result.apply(3.0), 0.0001);
+    }
+
+    @Test
     public void testMultiplyWithSameFunctionTypes() {
         double[] xValues = {1.0, 2.0, 3.0};
         double[] yValuesA = {4.0, 5.0, 6.0};
