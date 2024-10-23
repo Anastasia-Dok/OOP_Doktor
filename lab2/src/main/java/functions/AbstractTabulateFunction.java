@@ -3,7 +3,9 @@ package functions;
 import exceptions.ArrayIsNotSortedException;
 import exceptions.DifferentLengthOfArraysException;
 
-public abstract class AbstractTabulateFunction implements MathFunction {
+
+
+public abstract class AbstractTabulateFunction implements TabulatedFunction,MathFunction {
     protected int count;
 
     public int getCount() {
@@ -14,7 +16,6 @@ public abstract class AbstractTabulateFunction implements MathFunction {
 
     abstract public double getX(int index);
 
-    abstract protected int indexOfX(double x);
 
     abstract protected int floorIndexOfX(double x);
 
@@ -39,6 +40,7 @@ public abstract class AbstractTabulateFunction implements MathFunction {
         return interpolate(x, getX(index), getX(index + 1), getY(index), getY(index + 1));
     }
 
+
     public static void checkLengthIsTheSame(double[] xValues, double[] yValues) {
         if (xValues.length != yValues.length) {
             throw new DifferentLengthOfArraysException("The length of arrays must be the same.");
@@ -53,5 +55,15 @@ public abstract class AbstractTabulateFunction implements MathFunction {
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder(this.getClass().getSimpleName() + " size = " + this.count + "\n");
+
+        for(Point point:this){
+            str.append("[").append(point.x).append("; ").append(point.y).append("]\n");
+        }
+
+        return str.toString();
+    }
 
 }
