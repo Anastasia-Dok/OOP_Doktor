@@ -4,14 +4,10 @@ import functions.ArrayTabulateFunction;
 import functions.TabulatedFunction;
 import operations.TabulatedDifferentialOperator;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class ArrayTabulatedFunctionSerialization {
     public static void main(String[] args) {
-        // Укажите путь для сохранения файла
-        String filePath = "output/serialized_array_functions.bin";
 
         // Создание табулированной функции
         ArrayTabulateFunction originalFunction = new ArrayTabulateFunction(new double[]{1.0, 2.0, 3.0}, new double[]{1.0, 4.0, 9.0});
@@ -24,19 +20,20 @@ public class ArrayTabulatedFunctionSerialization {
         ArrayTabulateFunction secondDerivative = (ArrayTabulateFunction) differentialOperator.derive(firstDerivative);
 
         // Сериализация функций
-        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath))) {
-            FunctionsIO.serialize(bos, originalFunction);
-            FunctionsIO.serialize(bos, firstDerivative);
-            FunctionsIO.serialize(bos, secondDerivative);
+        try (BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream("output/serialized_array_functions.bin"))) {
+            FunctionsIO.serialize(outputStream, originalFunction);
+            FunctionsIO.serialize(outputStream, firstDerivative);
+            FunctionsIO.serialize(outputStream, secondDerivative);
         } catch (IOException e) {
             e.printStackTrace(); // Обработка исключения записи
         }
 
         // Десериализация функций
-        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath))) {
-            TabulatedFunction deserializedOriginal = FunctionsIO.deserialize(bos, ArrayTabulatedFunctionFactory.getInstance());
-            TabulatedFunction deserializedFirstDerivative = FunctionsIO.deserialize(bos, ArrayTabulatedFunctionFactory.getInstance());
-            TabulatedFunction deserializedSecondDerivative = FunctionsIO.deserialize(bos, ArrayTabulatedFunctionFactory.getInstance());
+        try (BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream("output/serialized_array_functions.bin"))) {
+
+            TabulatedFunction deserializedOriginal = FunctionsIO.deserialize(inputStream);
+            TabulatedFunction deserializedFirstDerivative = FunctionsIO.deserialize(inputStream);
+            TabulatedFunction deserializedSecondDerivative = FunctionsIO.deserialize(inputStream);
 
             // Вывод значений функций
             System.out.println("Original Function:");
@@ -50,4 +47,3 @@ public class ArrayTabulatedFunctionSerialization {
         }
     }
 }
-
