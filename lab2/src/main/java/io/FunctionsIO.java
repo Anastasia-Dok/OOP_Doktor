@@ -90,6 +90,17 @@ public final class FunctionsIO {
 
         return factory.create(xValues, yValues);
     }
+    public static void serialize(BufferedOutputStream stream, TabulatedFunction function) throws IOException {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(stream)) {
+            objectOutputStream.writeObject(function);
+        }
+        stream.flush();
+    }
+    static TabulatedFunction deserialize(BufferedInputStream stream) throws IOException, ClassNotFoundException {
+        ObjectInputStream inputStream = new ObjectInputStream(stream);
 
+        Object obj = inputStream.readObject();
+        return (TabulatedFunction) obj;
+    }
 
 }
