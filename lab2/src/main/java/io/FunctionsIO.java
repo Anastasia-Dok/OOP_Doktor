@@ -4,10 +4,7 @@ import functions.Point;
 import functions.TabulatedFunction;
 import functions.factory.TabulatedFunctionFactory;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.text.ParseException;
@@ -64,5 +61,12 @@ public final class FunctionsIO {
         } catch (NumberFormatException e) {
             throw new IOException("Error reading number of points", e);
         }
+    }
+
+    public static void serialize(BufferedOutputStream stream, TabulatedFunction function) throws IOException {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(stream)) {
+            objectOutputStream.writeObject(function);
+        }
+        stream.flush();
     }
 }
