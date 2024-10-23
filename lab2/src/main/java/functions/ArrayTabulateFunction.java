@@ -1,11 +1,15 @@
 package functions;
 import exceptions.InterpolationException;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Iterator;
 
-public class ArrayTabulateFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable {
+public class ArrayTabulateFunction extends AbstractTabulateFunction implements Iterable<Point>, Insertable, Removable, Serializable {
+
+
+    private static final long serialVersionUID = -5857996162427566071L;
     protected double[] arrX;
     protected double[] arrY;
 

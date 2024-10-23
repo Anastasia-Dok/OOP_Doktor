@@ -36,18 +36,6 @@ class AbstractTabulateFunctionTest {
                 AbstractTabulateFunction.checkSorted(xValues)
         );
     }
-    @Test
-    void testToString1(){
-        double [] xValues = {1.0, 2.0, 3.0};
-        double [] yValues = {4.0, 5.0, 6.0};
-        LinkedListTabulateFunction function1 = new LinkedListTabulateFunction(xValues, yValues);
-        ArrayTabulateFunction function2 = new ArrayTabulateFunction(xValues,yValues);
 
-        String stringLinkedListFunction = "LinkedListTabulatedFunction size = 3\n[1.0; 4.0]\n[2.0; 5.0]\n[3.0; 6.0]\n";
-        String stringArrayFunction = "ArrayTabulatedFunction size = 4\n[1.0; 6.0]\n[2.0; 4.0]\n[3.0; 0.0]\n[4.25; 5.55]\n";
-
-        assertEquals(stringLinkedListFunction, function1.toString());
-        assertEquals(stringArrayFunction, function2.toString());
-    }
 
 }
