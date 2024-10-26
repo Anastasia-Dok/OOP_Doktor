@@ -6,7 +6,7 @@ public class ReadTask implements Runnable {
 
     private final TabulatedFunction function;
 
-    ReadTask(TabulatedFunction function){
+    public ReadTask(TabulatedFunction function){
         this.function = function;
     }
 
