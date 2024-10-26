@@ -7,10 +7,10 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class LinkedListTabulateFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable,Removable, Serializable {
-    private final static long serialVersionUID= 4253690072661286980L;
+    private final static long serialVersionUID = 4253690072661286980L;
 
-    static class Node implements Serializable{
-        private final static long serialVersionUID= -5537592701102687503L;
+    static class Node implements Serializable {
+        private final static long serialVersionUID = -5537592701102687503L;
         public Node next;
         public Node prev;
         public double x;
@@ -189,12 +189,14 @@ public class LinkedListTabulateFunction extends AbstractTabulateFunction impleme
 
         return interpolate(x, floorNode.x, floorNode.next.x, floorNode.y, floorNode.next.y);
     }
+
     protected double interpolate(double x, Node floor) {
         if (x < floor.x || x > floor.next.x) {
             throw new InterpolationException("x is out of interpolation bounds");
         }
         return interpolate(x, floor.x, floor.next.x, floor.y, floor.next.y);
     }
+
     public Iterator<Point> iterator() {
         return new Iterator<Point>() {
             private Node node = head;
@@ -298,14 +300,5 @@ public class LinkedListTabulateFunction extends AbstractTabulateFunction impleme
         --count;
     }
 
-//    public void printList(){
-//    Node current = head;
-//        do
-//
-//    {
-//        System.out.print("x = " + current.x + " y = " + current.y + " | ");
-//        current = current.next;
-//    } while(current !=head);
-//    }
-
 }
+
