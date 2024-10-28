@@ -1,20 +1,20 @@
 package concurrent;
 
-import functions.ArrayTabulateFunction;
-import functions.LinkedListTabulateFunction;
-import functions.Point;
-import functions.SqrFunction;
+import functions.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class SynchronizedTabulatedFunctionTest {
     @Test
     void indexOfXTest1() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
-        Assertions.assertEquals(4, func.indexOfX(5));
+        assertEquals(4, func.indexOfX(5));
     }
 
     @Test
@@ -23,7 +23,7 @@ public class SynchronizedTabulatedFunctionTest {
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
-        Assertions.assertEquals(-1, wrapper.indexOfX(6));
+        assertEquals(-1, wrapper.indexOfX(6));
     }
 
     @Test
@@ -32,7 +32,7 @@ public class SynchronizedTabulatedFunctionTest {
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
-        Assertions.assertEquals(-1, wrapper.indexOfY(6));
+        assertEquals(-1, wrapper.indexOfY(6));
     }
 
     @Test
@@ -41,7 +41,7 @@ public class SynchronizedTabulatedFunctionTest {
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
-        Assertions.assertEquals(1, wrapper.indexOfY(2));
+        assertEquals(1, wrapper.indexOfY(2));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class SynchronizedTabulatedFunctionTest {
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
-        Assertions.assertEquals(1, wrapper.leftBound());
+        assertEquals(1, wrapper.leftBound());
     }
 
     @Test
@@ -59,7 +59,7 @@ public class SynchronizedTabulatedFunctionTest {
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
-        Assertions.assertEquals(5, wrapper.rightBound());
+        assertEquals(5, wrapper.rightBound());
     }
 
 
@@ -69,7 +69,7 @@ public class SynchronizedTabulatedFunctionTest {
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
-        Assertions.assertEquals(arrY[0] + (arrY[1] - arrY[0]) / (arrX[1] - arrX[0]) * (-1 - arrX[0]),wrapper.apply(-1) );
+        assertEquals(arrY[0] + (arrY[1] - arrY[0]) / (arrX[1] - arrX[0]) * (-1 - arrX[0]),wrapper.apply(-1) );
     }
 
     @Test
@@ -78,7 +78,7 @@ public class SynchronizedTabulatedFunctionTest {
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
-        Assertions.assertEquals(arrY[func.getCount() - 2] + (arrY[func.getCount() - 1] - arrY[func.getCount() - 2]) / (arrX[func.getCount() - 1] - arrX[func.getCount() - 2]) * (6 - arrX[func.getCount() - 2]), wrapper.apply(6));
+        assertEquals(arrY[func.getCount() - 2] + (arrY[func.getCount() - 1] - arrY[func.getCount() - 2]) / (arrX[func.getCount() - 1] - arrX[func.getCount() - 2]) * (6 - arrX[func.getCount() - 2]), wrapper.apply(6));
     }
 
 
@@ -88,7 +88,7 @@ public class SynchronizedTabulatedFunctionTest {
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
-        Assertions.assertEquals(4, wrapper.getX(3));
+        assertEquals(4, wrapper.getX(3));
     }
 
     @Test
@@ -97,7 +97,7 @@ public class SynchronizedTabulatedFunctionTest {
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
-        Assertions.assertEquals(3, wrapper.getX(2));
+        assertEquals(3, wrapper.getX(2));
     }
 
     @Test
@@ -107,7 +107,7 @@ public class SynchronizedTabulatedFunctionTest {
         ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
         wrapper.setY(2, 5);
-        Assertions.assertEquals(5, wrapper.getY(2));
+        assertEquals(5, wrapper.getY(2));
     }
 
     @Test
@@ -142,8 +142,8 @@ public class SynchronizedTabulatedFunctionTest {
         int j = 0;
         while(iterator.hasNext()){
             Point point = iterator.next();
-            Assertions.assertEquals(point.x, wrapper.getX(j));
-            Assertions.assertEquals(point.y, wrapper.getY(j++));
+            assertEquals(point.x, wrapper.getX(j));
+            assertEquals(point.y, wrapper.getY(j++));
         }
     }
 
@@ -153,8 +153,8 @@ public class SynchronizedTabulatedFunctionTest {
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(arr);
         int j = 0;
         for (Point point : wrapper) {
-            Assertions.assertEquals(point.x, wrapper.getX(j));
-            Assertions.assertEquals(point.y, wrapper.getY(j++));
+            assertEquals(point.x, wrapper.getX(j));
+            assertEquals(point.y, wrapper.getY(j++));
         }
     }
 
@@ -184,5 +184,31 @@ public class SynchronizedTabulatedFunctionTest {
             ++i;
         }
         Assertions.assertArrayEquals(points,new Point[]{new Point(1,4),new Point(2,5),new Point(3,6),});
+    }
+
+    @Test
+    public void testDoSynchronouslyWithReturnValue() {
+        // Создаем табулированную функцию
+        TabulatedFunction function = new LinkedListTabulateFunction(new UnitFunction(), 1, 10, 10);
+        SynchronizedTabulatedFunction synchronizedFunction = new SynchronizedTabulatedFunction(function);
+
+        // Операция получения значения y по индексу
+        double yValue = synchronizedFunction.doSynchronously(f -> f.getY(5));
+
+        assertEquals(1.0, yValue, 0.001);
+    }
+
+    @Test
+    public void testDoSynchronouslyWithoutReturnValue() {
+        TabulatedFunction function = new LinkedListTabulateFunction(new UnitFunction(), 1, 10, 10);
+        SynchronizedTabulatedFunction synchronizedFunction = new SynchronizedTabulatedFunction(function);
+
+        // Операция изменения значения y по индексу (без возвращаемого значения)
+        synchronizedFunction.doSynchronously(f -> {
+            f.setY(5, 2.0);
+            return null; // Возвращаем null для Void
+        });
+
+        assertEquals(2.0, synchronizedFunction.doSynchronously(f -> f.getY(5)), 0.001);
     }
 }

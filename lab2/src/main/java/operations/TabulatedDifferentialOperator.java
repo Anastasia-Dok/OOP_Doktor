@@ -1,5 +1,6 @@
 package operations;
 
+import concurrent.SynchronizedTabulatedFunction;
 import functions.Point;
 import functions.TabulatedFunction;
 import functions.factory.ArrayTabulatedFunctionFactory;
@@ -39,6 +40,14 @@ public class TabulatedDifferentialOperator implements DifferentialOperator<Tabul
         return factory.create(xValues, yValues);
     }
 
+    public TabulatedFunction deriveSynchronously(TabulatedFunction function) {
+        if(!(function instanceof SynchronizedTabulatedFunction)) {
+            function = new SynchronizedTabulatedFunction(function);
+        }
+
+        SynchronizedTabulatedFunction syncFunction = (SynchronizedTabulatedFunction) function;
+        return syncFunction.doSynchronously(this::derive);
+    }
     @Override
     public double apply(double x) {
         throw new UnsupportedOperationException("for using derive");
