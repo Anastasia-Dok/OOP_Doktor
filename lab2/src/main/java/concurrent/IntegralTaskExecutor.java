@@ -31,10 +31,10 @@ public class IntegralTaskExecutor {
             results.add(executor.submit(integral));
         }
 
-            for (Future<Double> result : results) {
+        for (Future<Double> result : results) {
                 integralResult += result.get();
 
-            }
+        }
 
 
         return integralResult;
