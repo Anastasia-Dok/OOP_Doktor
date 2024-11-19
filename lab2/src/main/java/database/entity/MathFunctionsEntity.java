@@ -29,6 +29,7 @@ public class MathFunctionsEntity {
     @OneToMany(mappedBy = "function", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PointEntity> points;
 
+
     public Long getId() {
         return id;
     }
@@ -36,6 +37,7 @@ public class MathFunctionsEntity {
     public void setId(Long id) {
         this.id = id;
     }
+
 
     public String getFunctionName() {
         return functionName;
@@ -76,4 +78,5 @@ public class MathFunctionsEntity {
     public void setPoints(List<PointEntity> points) {
         this.points = points;
     }
+
 }
