@@ -1,9 +1,13 @@
 package database.service;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import database.DTO.MathFunctionsDTO;
 import database.entity.MathFunctionsEntity;
 import database.repositories.MathFunctionsRepository;
-import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.List;
@@ -12,19 +16,30 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-
 class MathFunctionsServiceTest {
+
+    @InjectMocks
     private MathFunctionsService mathFunctionsService;
+
+    @Mock
     private MathFunctionsRepository mathFunctionsRepository;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
+
     @Test
     void testCreate() {
         MathFunctionsDTO dto = new MathFunctionsDTO();
+        dto.setId(1L);
         dto.setFunctionName("add");
         dto.setxTo(10.0);
         dto.setxFrom(0.0);
         dto.setCount(100);
 
         MathFunctionsEntity entity = new MathFunctionsEntity();
+        entity.setId(1L);
         entity.setFunctionName("add");
         entity.setxTo(10.0);
         entity.setxFrom(0.0);

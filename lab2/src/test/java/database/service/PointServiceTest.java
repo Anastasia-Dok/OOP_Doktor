@@ -1,7 +1,5 @@
 package database.service;
 
-
-
 import database.DTO.PointDTO;
 import database.entity.MathFunctionsEntity;
 import database.entity.PointEntity;
@@ -9,8 +7,9 @@ import database.repositories.MathFunctionsRepository;
 import database.repositories.PointRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,20 +20,21 @@ import static org.mockito.Mockito.*;
 
 class PointServiceTest {
 
-
+    @InjectMocks
     private PointService pointService;
 
-
+    @Mock
     private PointRepository pointRepository;
 
+    @Mock
     private MathFunctionsRepository mathFunctionsRepository;
 
-
+    @Mock
     MathFunctionsEntity function;
 
     @BeforeEach
     void setUp() {
-
+        MockitoAnnotations.openMocks(this);
         when(function.getId()).thenReturn(1L);
     }
 
