@@ -39,15 +39,16 @@ public class PointController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
-        if(pointService.getById(id) != null) {
-            pointService.delete(pointService.getById(id));
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        PointDTO point = pointService.getById(id);
+        if (point != null) {
+            pointService.delete(point);
             return ResponseEntity.ok().build();
-        }
-        else{
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
+
 
     @GetMapping("/search")
     public ResponseEntity<List<PointDTO>> findPointsByFunction(@RequestParam Long id) {
