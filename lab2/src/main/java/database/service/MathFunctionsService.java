@@ -1,13 +1,13 @@
 package database.service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import database.DTO.MathFunctionsDTO;
 import database.entity.MathFunctionsEntity;
 import database.repositories.MathFunctionsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +23,7 @@ public class MathFunctionsService {
 
     @PersistenceContext
     private EntityManager entityManager;
-
+//Методы CRUD:
     public MathFunctionsDTO create(MathFunctionsDTO dto_obj){
         MathFunctionsEntity entity = convertToEntity(dto_obj);
         MathFunctionsEntity createdentity = mathFunctionsRepository.save(entity);
@@ -72,7 +72,7 @@ public class MathFunctionsService {
         dto_obj.setCount(entity.getCount());
 
         return dto_obj;
-    }
+    }//Преобразует сущность в DTO, что позволяет передавать только необходимые данные в контроллеры.
 
     private MathFunctionsEntity convertToEntity(MathFunctionsDTO dto_obj){
         MathFunctionsEntity entity = new MathFunctionsEntity();
@@ -84,9 +84,9 @@ public class MathFunctionsService {
         entity.setCount(dto_obj.getCount());
 
         return entity;
-    }
+    }//Преобразует DTO в сущность, чтобы сохранить ее в базе данных.
 
     public List<MathFunctionsDTO> findsByName(String name) {
         return this.mathFunctionsRepository.findByFunctionName(name).stream().map(this::convertToDto).collect(Collectors.toList());
-    }
+    }//Метод для поиска сущностей по имени функции. Он возвращает список DTO
 }

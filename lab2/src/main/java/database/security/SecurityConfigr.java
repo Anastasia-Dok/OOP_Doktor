@@ -1,6 +1,5 @@
 package database.security;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,9 +15,9 @@ public class SecurityConfigr {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable() // Для разработки. В продакшене лучше включить!
-                .cors().disable()
-                .authorizeRequests()
+                .csrf().disable()//Отключает защиту от подделки межсайтовых запросов (CSRF)
+                .cors().disable()//ограничить доступ к  API только определенными доменами
+                .authorizeRequests()//Начало определения правил авторизации для различных маршрутов (URL)
                 .antMatchers("/login", "/register").permitAll() // Разрешить доступ без аутентификации
                 .anyRequest().authenticated() // Остальные запросы требуют аутентификации
                 .and()

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
-
+//Контроллер обрабатывает HTTP запросы и взаимодействует с сервисом
 @Controller
 public class UserController {
 
@@ -34,12 +34,12 @@ public class UserController {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
+//Метод для отображения страницы логина (HTTP GET):
     @GetMapping("/login")
     public String loginPage() {
         return "login";
     }
-
+//Метод для отображения домашней страницы (HTTP GET):
     @GetMapping("/")
     public String home() {
         return "home";
@@ -68,13 +68,16 @@ public class UserController {
     }
 
 
-
+//Метод для регистрации пользователя (HTTP POST):
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody UserDTO userDto) {
+        //Сначала проверяет, существует ли уже пользователь с таким именем, используя репозиторий.
+        //Если такой пользователь есть, возвращается сообщение об ошибке с кодом 400 (Bad Request).
         if (userRepository.findByUsername(userDto.getUsername()).isPresent()) {
             return ResponseEntity.badRequest().body("Пользователь с таким именем уже существует");
         }
-
+//Если форма регистрации валидна, создается новый объект UserEntity,
+//устанавливаются свойства (имя, зашифрованный пароль, роль и время создания
         UserEntity newUser = new UserEntity();
         newUser.setUsername(userDto.getUsername());
         newUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
