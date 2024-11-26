@@ -7,7 +7,7 @@
   },
   "item": [
     {
-      "name": "http://localhost:8080/user/login",
+      "name": "http://localhost:5432/user/login",
       "event": [
         {
           "listen": "test",
@@ -36,12 +36,12 @@
           }
         },
         "url": {
-          "raw": "http://localhost:8080/user/login",
+          "raw": "http://localhost:5432/user/login",
           "protocol": "http",
           "host": [
             "localhost"
           ],
-          "port": "8080",
+          "port": "5432",
           "path": [
             "user",
             "login"
@@ -51,7 +51,7 @@
       "response": []
     },
     {
-      "name": "http://localhost:8080/user/register",
+      "name": "http://localhost:5432/user/register",
       "request": {
         "auth": {
           "type": "noauth"
@@ -68,12 +68,12 @@
           }
         },
         "url": {
-          "raw": "http://localhost:8080/user/register",
+          "raw": "http://localhost:5432/user/register",
           "protocol": "http",
           "host": [
             "localhost"
           ],
-          "port": "8080",
+          "port": "5432",
           "path": [
             "user",
             "register"
@@ -83,7 +83,7 @@
       "response": []
     },
     {
-      "name": "http://localhost:8080/functions",
+      "name": "http://localhost:5432/functions",
       "event": [
         {
           "listen": "test",
@@ -121,12 +121,12 @@
           }
         },
         "url": {
-          "raw": "http://localhost:8080/functions",
+          "raw": "http://localhost:5432/functions",
           "protocol": "http",
           "host": [
             "localhost"
           ],
-          "port": "8080",
+          "port": "5432",
           "path": [
             "functions"
           ]
@@ -135,7 +135,7 @@
       "response": []
     },
     {
-      "name": "http://localhost:8080/functions/{{fId}}",
+      "name": "http://localhost:5432/functions/{{fId}}",
       "request": {
         "auth": {
           "type": "bearer",
@@ -150,12 +150,12 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/functions/{{fId}}",
+          "raw": "http://localhost:5432/functions/{{fId}}",
           "protocol": "http",
           "host": [
             "localhost"
           ],
-          "port": "8080",
+          "port": "5432",
           "path": [
             "functions",
             "{{fId}}"
@@ -165,7 +165,7 @@
       "response": []
     },
     {
-      "name": "http://localhost:8080/functions/{{fId}}",
+      "name": "http://localhost:5432/functions/{{fId}}",
       "request": {
         "auth": {
           "type": "bearer",
@@ -189,12 +189,12 @@
           }
         },
         "url": {
-          "raw": "http://localhost:8080/functions/{{fId}}",
+          "raw": "http://localhost:5432/functions/{{fId}}",
           "protocol": "http",
           "host": [
             "localhost"
           ],
-          "port": "8080",
+          "port": "5432",
           "path": [
             "functions",
             "{{fId}}"
@@ -204,7 +204,7 @@
       "response": []
     },
     {
-      "name": "http://localhost:8080/functions/search?name=updated-add",
+      "name": "http://localhost:5432/functions/search?name=updated-add",
       "request": {
         "auth": {
           "type": "bearer",
@@ -219,12 +219,12 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/functions/search?name=updated-add",
+          "raw": "http://localhost:5432/functions/search?name=updated-add",
           "protocol": "http",
           "host": [
             "localhost"
           ],
-          "port": "8080",
+          "port": "5432",
           "path": [
             "functions",
             "search"
@@ -240,7 +240,7 @@
       "response": []
     },
     {
-      "name": "http://localhost:8080/point",
+      "name": "http://localhost:5432/point",
       "event": [
         {
           "listen": "test",
@@ -277,12 +277,12 @@
           }
         },
         "url": {
-          "raw": "http://localhost:8080/point",
+          "raw": "http://localhost:5432/point",
           "protocol": "http",
           "host": [
             "localhost"
           ],
-          "port": "8080",
+          "port": "5432",
           "path": [
             "point"
           ]
@@ -291,7 +291,7 @@
       "response": []
     },
     {
-      "name": "http://localhost:8080/point/{{pointId}}",
+      "name": "http://localhost:5432/point/{{pointId}}",
       "request": {
         "auth": {
           "type": "bearer",
@@ -306,12 +306,12 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/point/{{pointId}}",
+          "raw": "http://localhost:5432/point/{{pointId}}",
           "protocol": "http",
           "host": [
             "localhost"
           ],
-          "port": "8080",
+          "port": "5432",
           "path": [
             "point",
             "{{pointId}}"
@@ -321,7 +321,7 @@
       "response": []
     },
     {
-      "name": "http://localhost:8080/point/{{pointId}}",
+      "name": "http://localhost:5432/point/{{pointId}}",
       "request": {
         "auth": {
           "type": "bearer",
@@ -345,12 +345,12 @@
           }
         },
         "url": {
-          "raw": "http://localhost:8080/point/{{pointId}}",
+          "raw": "http://localhost:5432/point/{{pointId}}",
           "protocol": "http",
           "host": [
             "localhost"
           ],
-          "port": "8080",
+          "port": "5432",
           "path": [
             "point",
             "{{pointId}}"
@@ -360,7 +360,7 @@
       "response": []
     },
     {
-      "name": "http://localhost:8080/point/search?id={{fId}}",
+      "name": "http://localhost:5432/point/search?id={{fId}}",
       "request": {
         "auth": {
           "type": "bearer",
@@ -375,12 +375,12 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/point/search?id={{fId}}",
+          "raw": "http://localhost:5432/point/search?id={{fId}}",
           "protocol": "http",
           "host": [
             "localhost"
           ],
-          "port": "8080",
+          "port": "5432",
           "path": [
             "point",
             "search"
@@ -396,7 +396,7 @@
       "response": []
     },
     {
-      "name": "http://localhost:8080/point/{{pointId}}",
+      "name": "http://localhost:5432/point/{{pointId}}",
       "request": {
         "auth": {
           "type": "bearer",
@@ -411,12 +411,12 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/point/{{pointId}}",
+          "raw": "http://localhost:5432/point/{{pointId}}",
           "protocol": "http",
           "host": [
             "localhost"
           ],
-          "port": "8080",
+          "port": "5432",
           "path": [
             "point",
             "{{pointId}}"
@@ -426,7 +426,7 @@
       "response": []
     },
     {
-      "name": "http://localhost:8080/functions/{{fId}}",
+      "name": "http://localhost:5432/functions/{{fId}}",
       "request": {
         "auth": {
           "type": "bearer",
@@ -441,12 +441,12 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/functions/{{fId}}",
+          "raw": "http://localhost:5432/functions/{{fId}}",
           "protocol": "http",
           "host": [
             "localhost"
           ],
-          "port": "8080",
+          "port": "5432",
           "path": [
             "functions",
             "{{fId}}"
