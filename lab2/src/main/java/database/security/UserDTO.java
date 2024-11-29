@@ -1,5 +1,4 @@
-package database.DTO;
-import database.security.Role;
+package database.security;
 
 public class UserDTO {
     private String username;

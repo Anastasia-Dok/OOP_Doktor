@@ -1,7 +1,7 @@
 package database.service;
 
-import database.entity.UserEntity;
-import database.repositories.UserRepository; //Интерфейс репозитория, который
+import database.security.UserEntity;
+import database.security.UserRepository; //Интерфейс репозитория, который
 // предоставляет методы для взаимодействия с базой данных
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,8 +1,5 @@
-package database.config;
+package database.security;
 
-import database.security.CustomUserDetailsService;
-import database.security.JwtAuthenticationFilter;
-import database.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
