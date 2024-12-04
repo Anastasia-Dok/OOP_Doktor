@@ -214,7 +214,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0dXNlciIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTczMDk5MDMwOSwiZXhwIjoxNzMxMDc2NzA5fQ.siAYqu3MQabXUlqYpr4D09DILrtZIF8_6dBdGo2XWds",
+							"value": "{{token}}",
 							"type": "string"
 						}
 					]
