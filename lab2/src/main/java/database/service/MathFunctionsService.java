@@ -77,7 +77,9 @@ public class MathFunctionsService {
     private MathFunctionsEntity convertToEntity(MathFunctionsDTO dto_obj){
         MathFunctionsEntity entity = new MathFunctionsEntity();
 
-        entity.setId(dto_obj.getId());
+        if(dto_obj.getId() != null){
+            entity.setId(dto_obj.getId());
+        }
         entity.setFunctionName(dto_obj.getFunctionName());
         entity.setxTo(dto_obj.getxTo());
         entity.setxFrom(dto_obj.getxFrom());
