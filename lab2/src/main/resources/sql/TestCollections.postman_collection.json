@@ -116,7 +116,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"add\",\r\n    \"xTo\": 10.5,\r\n    \"xFrom\": -10.5,\r\n    \"count\": 5\r\n}",
+					"raw": "{\r\n    \"functionName\": \"add\",\r\n    \"xTo\": 10.5,\r\n    \"xFrom\": -10.5,\r\n    \"count\": 5\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -184,7 +184,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"updated-add\",\r\n    \"xTo\": 12.5,\r\n    \"xFrom\": -12.5,\r\n    \"count\": 7\r\n}",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"functionName\": \"updated-add\",\r\n    \"xTo\": 12.5,\r\n    \"xFrom\": -12.5,\r\n    \"count\": 7\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
