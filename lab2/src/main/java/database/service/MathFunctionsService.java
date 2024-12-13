@@ -29,11 +29,11 @@ public class MathFunctionsService {
         MathFunctionsEntity createdentity = mathFunctionsRepository.save(entity);
 
         return convertToDto(createdentity);
-    }
+    }// Создает новую сущность на основе переданного DTO и сохраняет ее в базе данных.
 
     public MathFunctionsDTO read(Long id) {
         return mathFunctionsRepository.findById(id).map(this::convertToDto).orElse(null);
-    }
+    }//Читает сущность из базы данных по ее идентификатору и возвращает DTO.
 
     public MathFunctionsDTO update(MathFunctionsDTO dto_obj){
         if(mathFunctionsRepository.existsById(dto_obj.getId())){
@@ -43,7 +43,7 @@ public class MathFunctionsService {
             return convertToDto(updatedentity);
         }
         throw new RuntimeException();
-    }
+    }//Обновляет сущность, если она существует, и возвращает обновленный DTO
 
     public void delete(MathFunctionsDTO dto_obj){
         if(mathFunctionsRepository.existsById(dto_obj.getId())){
@@ -52,14 +52,14 @@ public class MathFunctionsService {
         } else{
             throw new RuntimeException();
         }
-    }
+    }//Удаляет сущность из базы данных по ее идентификатору.
 
     public MathFunctionsDTO getById(Long id){
         if(mathFunctionsRepository.existsById(id)){
             return convertToDto(mathFunctionsRepository.getById(id));
         }
         return null;
-    }
+    }// Получает сущность по идентификатору, если она существует.
 
 
     private MathFunctionsDTO convertToDto(MathFunctionsEntity entity){
