@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.initial-function, .result-function {
+    width: 45%; /* Ширина каждой области */
+    margin: 10px; /* Отступ между областями */
+}
+
+table {
+    width: 100%; /* Ширина таблицы на 100% */
+    border-collapse: collapse; /* Убирает двойные границы */
+}
+
+th, td {
+    border: 1px solid black; /* Граница ячеек */
+    padding: 8px; /* Отступы в ячейках */
+    text-align: center; /* Выравнивание текста по центру */
+}

@@ -4,19 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Главная страница</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="settings_menu/styles.css">
 </head>
 <body>
 <div class="container">
   <h1>Добро пожаловать!</h1>
   <p>Выберите, что вы хотите сделать:</p>
   <nav class="menu">
-    <button onclick="navigateTo('CreateFromFunc.html')">Создать Табулированной Функции из MathFunction</button>
+    <button onclick="navigateTo('CreateFromFunc.html')">Создать табулированную функцию из MathFunction</button>
     <button onclick="navigateTo('index.html')">Создать TabulatedFunction из массива</button>
-    <button onclick="navigateTo('settingsPage.html')">Настройки</button>
+    <button onclick="navigateTo('settings_menu.html')">Настройки</button>
+    <button onclick="navigateTo('operations.html')">Операции над функциями</button>
+    <button onclick="navigateTo('diff_operations.html')">Дифференцирование табулированной функции</button>
   </nav>
 </div>
-
 <script>
   // Функция для навигации
   function navigateTo(page) {
