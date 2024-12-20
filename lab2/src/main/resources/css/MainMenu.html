@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная страница</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <h1>Добро пожаловать!</h1>
+  <p>Выберите, что вы хотите сделать:</p>
+  <nav class="menu">
+    <button onclick="navigateTo('CreateFromFunc.html')">Создать Табулированной Функции из MathFunction</button>
+    <button onclick="navigateTo('index.html')">Создать TabulatedFunction из массива</button>
+    <button onclick="navigateTo('settingsPage.html')">Настройки</button>
+  </nav>
+</div>
+
+<script>
+  // Функция для навигации
+  function navigateTo(page) {
+      window.location.href = page;
+  }
+</script>
+</body>
+</html>
