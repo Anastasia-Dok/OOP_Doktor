@@ -4,21 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TabulatedFunction Creator</title>
-    <link rel="stylesheet" href="settings_menu/styles.css">
+
     <style>
-        body {
-        font-family: Arial, sans-serif;
-    }
+          body {
+        #createTableButton:disabled {
+            background-color: #DCDCDC; /* Серый цвет для заблокированной кнопки */
+            color: #000; /* Темный текст для заблокированной кнопки */
+            cursor: not-allowed; /* Курсор недоступен */
+        }
+
+        #createTableButton:enabled {
+            background-color: #fff; /* Зеленый цвет для активной кнопки */
+            color: fff; /* Белый текст для активной кнопки */
+
+        }
+         button {
+                   padding: 10px;
+                   margin: 10px 0;
+                   font-family: "Times New Roman", serif, Times;
+                   padding: 0.5em 1.5em; /* Поля по вертикали и горизонтали */
+                   background-color: #fff; /* Прозрачный цвет фона */
+                   font-size: 0.9em; /* Размер текста */
+                   text-transform: uppercase; /* Все буквы заглавные */
+                   color: #000; /* Цвет текста */
+                   border: 2px solid #006400; /* Параметры рамки */
+                   border-radius: 0.4em; /* Радиус скругления */
+                    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.3);
+                    margin-right: 1rem;
+                    transition: background-color 0.2s, box-shadow 0.2s 0.2s;
+                    margin: 6px; /* Отступы между кнопками */
+               }
+
+         button:hover {
+                    background-color: #8FBC8F;
+                    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #3f8a7c;
+         }
+           font-family: "Times New Roman", serif, Times;
+           margin: 20px;
+           h1{font-size: 40px;
+           text-align: center;}
+           background:
+                   url(https://i.pinimg.com/736x/09/8d/f8/098df816aab106b5016416745f40781a.jpg)
+                   200px 150px;
+                    right
+                   repeat-y; /* Повторять изображение только по вертикали */
+                    fixed; /* Зафиксировать фон */
+                    padding-right: 100px;
+
+
+         }
+        label{
+                    font-family: "Times New Roman", serif, Times;
+                    font-weight: 600;
+                    margin: 6px;
+                    font-size: 1.4em;
+               }
+
 
     .container {
     max-width: 600px;
     margin: auto;
     padding: 20px;
+
     }
 
     table {
     width: 100%;
     border-collapse: collapse;
+
     }
 
     table, th, td {
@@ -37,11 +90,12 @@
     </style>
 </head>
 <body>
+
 <div class="container">
     <h1>Создание TabulatedFunction</h1>
     <label for="pointCount">Количество точек:</label>
-    <input type="number" id="pointCount" min="1" >
-    <button id="createTableButton">Создать таблицу</button>
+    <input type="number" id="pointCount" min="2" oninput="toggleCreateButton()">
+    <button id="createTableButton" >Создать таблицу</button>
 
     <div id="tableContainer" class="hidden">
         <table id="dataTable">
@@ -77,17 +131,30 @@
     </div>
 </div>
 
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    function toggleCreateButton() {
+        const pointCountInput = document.getElementById('pointCount');
+        const createTableButton = document.getElementById('createTableButton');
 
+        // Проверяем, есть ли значение в поле ввода и больше ли оно нуля
+        if (pointCountInput.value && pointCountInput.value > 1) {
+            createTableButton.disabled = false; // Включаем кнопку
+        } else {
+            createTableButton.disabled = true; // Выключаем кнопку
+        }
+    }
+</script>
 <script src="script.js"></script>
 </body>
 <body>
 <div class="container">
-
     <button onclick="window.location.href='MainMenu.html'">Назад</button>
 </div>
+
 </body>
 </html>
