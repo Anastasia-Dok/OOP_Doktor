@@ -5,21 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Настройки Фабрики</title>
     <link rel="stylesheet" href="settings_menu/styles.css">
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    }
 
-    select, button {
-    padding: 10px;
-    margin: 10px 0;
-    }
+    <style>
+
+       body {
+           font-family: "Times New Roman", serif, Times;
+           margin: 20px;
+           h1{font-size: 40px;
+           text-align: center;}
+           p{ font-family: "Times New Roman", serif, Times;
+            font-size: 25px;
+            text-align: left;
+            font-weight: 600;
+            }
+           background:
+            url(https://i.pinimg.com/736x/23/e6/49/23e649f8d9a42c91348643f5b1ff1134.jpg)
+            right
+            no-repeat /* Не повторять рисунок */
+            fixed; /* Зафиксировать фон */
+            padding-right: 700px;
+
+       }
+
+       button {
+           padding: 10px;
+           margin: 10px 0;
+           font-family: "Times New Roman", serif, Times;
+           padding: 0.5em 1.5em; /* Поля по вертикали и горизонтали */
+           background-color: #fff; /* Прозрачный цвет фона */
+           font-size: 0.9em; /* Размер текста */
+           text-transform: uppercase; /* Все буквы заглавные */
+           color: #000; /* Цвет текста */
+           border: 2px solid #006400; /* Параметры рамки */
+           border-radius: 0.4em; /* Радиус скругления */
+            text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.3);
+            margin-right: 1rem;
+            transition: background-color 0.2s, box-shadow 0.2s 0.2s;
+            margin: 6px; /* Отступы между кнопками */
+       }
+
+        button:hover {
+            background-color: #8FBC8F;
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #3f8a7c;
+        }
+
+       select{
+            text-transform: uppercase; /* Все буквы заглавные */
+           font-size: 0.9em; /* Размер текста */
+           padding: 10px;
+           margin: 10px 0;
+           border: 2px solid #006400; /* Параметры рамки */
+           border-radius: 0.4em; /* Радиус скругления */
+            text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.3);
+            margin-right: 1rem;
+            transition: background-color 0.2s, box-shadow 0.2s 0.2s;
+            font-family: "Times New Roman", serif, Times;
+            font-weight: 600;
+            width: 50%;
+
+
+       }
+       label{
+            font-family: "Times New Roman", serif, Times;
+            font-weight: 600;
+            margin: 6px;
+            font-size: 1.4em;
+
+       }
+
+
+
+
+
+
     </style>
 </head>
 <body>
 
-<h1>Выберите фабрику для генерации функции</h1>
+<h1>Настройки</h1>
+<p>Вы можете выбрать фабрику для генерации новых табулированных функций</p>
 
 <label for="factorySelect">Выберите тип фабрики:</label>
 <select id="factorySelect">
@@ -30,6 +94,5 @@
 <button onclick="applyButton">Применить</button>
 <button onclick="window.location.href='MainMenu.html'">Назад</button>
 <script src="script.js"></script>
-
 </body>
 </html>
