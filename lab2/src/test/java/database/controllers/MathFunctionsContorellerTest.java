@@ -93,7 +93,7 @@ public class MathFunctionsContorellerTest {
         List<MathFunctionsDTO> functions = Collections.singletonList(mathFunctionsDTO);
         when(mathFunctionsService.findsByName("Test Function")).thenReturn(functions);
 
-        ResponseEntity<List<MathFunctionsDTO>> response = mathFunctionsController.findDyName("Test Function");
+        ResponseEntity<List<MathFunctionsDTO>> response = mathFunctionsController.findByName("Test Function");
 
         assertEquals(200, response.getStatusCodeValue());
         assertEquals(functions, response.getBody());
@@ -104,7 +104,7 @@ public class MathFunctionsContorellerTest {
     public void testFindByNameNoContent() {
         when(mathFunctionsService.findsByName("Unknown Function")).thenReturn(Collections.emptyList());
 
-        ResponseEntity<List<MathFunctionsDTO>> response = mathFunctionsController.findDyName("Unknown Function");
+        ResponseEntity<List<MathFunctionsDTO>> response = mathFunctionsController.findByName("Unknown Function");
 
         assertEquals(204, response.getStatusCodeValue());
         assertNull(response.getBody());

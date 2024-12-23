@@ -1,6 +1,9 @@
 package database.controllers;
 
 
+import database.DTO.PointDTO;
+import database.entity.PointEntity;
+import database.service.PointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +11,7 @@ import database.DTO.MathFunctionsDTO;
 import database.service.MathFunctionsService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/functions")
@@ -23,7 +27,7 @@ public class MathFunctionsContoreller {
 // в теле запроса и преобразует их в объект MathFunctionsDTO.
 //   - Сервис mathFunctionsService вызывается для создания новой функции.
 //   - Возвращается HTTP-ответ с кодом 200 (OK) и созданным объектом.
-    @PostMapping
+    @PostMapping("/functions/dto")
     public ResponseEntity<MathFunctionsDTO> create(@RequestBody MathFunctionsDTO dto_obj){
         MathFunctionsDTO response = mathFunctionsService.create(dto_obj);
         return ResponseEntity.ok(response);
@@ -55,7 +59,7 @@ public class MathFunctionsContoreller {
     }
 
     @GetMapping("/search")
-    public  ResponseEntity<List<MathFunctionsDTO>> findDyName(@RequestParam String name){
+    public  ResponseEntity<List<MathFunctionsDTO>> findByName(@RequestParam String name){
         List<MathFunctionsDTO> functions = mathFunctionsService.findsByName(name);
         if(functions.isEmpty()){
             return ResponseEntity.noContent().build();
@@ -63,4 +67,16 @@ public class MathFunctionsContoreller {
         return ResponseEntity.ok(functions);
     }//- Если функции найдены, возвращается список с кодом 200 (OK).
    //- Если список пуст, возвращается код 204 (No Content).
+
+    @PostMapping
+    public ResponseEntity<MathFunctionsDTO> createFromPoints(@RequestBody List<PointDTO> dto_obj){
+        // Преобразуем List<PointDTO> в List<PointEntity с помощью PointService
+
+
+        // Передаем в MathFunctionsService для создания MathFunctionsDTO
+        MathFunctionsDTO response = mathFunctionsService.createFromPoints(dto_obj);
+
+        return ResponseEntity.ok(response);
+    }
+
 }

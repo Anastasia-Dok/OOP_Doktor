@@ -1,7 +1,9 @@
 package database.service;
 
 import database.DTO.MathFunctionsDTO;
+import database.DTO.PointDTO;
 import database.entity.MathFunctionsEntity;
+import database.entity.PointEntity;
 import database.repositories.MathFunctionsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,13 @@ public class MathFunctionsService {
     private EntityManager entityManager;
 //Методы CRUD:
     public MathFunctionsDTO create(MathFunctionsDTO dto_obj){
+        MathFunctionsEntity entity = convertToEntity(dto_obj);
+        MathFunctionsEntity createdentity = mathFunctionsRepository.save(entity);
+
+        return convertToDto(createdentity);
+    }// Создает новую сущность на основе переданного DTO и сохраняет ее в базе данных.
+
+    public MathFunctionsDTO createFromPoints(List<PointDTO> dto_obj){
         MathFunctionsEntity entity = convertToEntity(dto_obj);
         MathFunctionsEntity createdentity = mathFunctionsRepository.save(entity);
 
@@ -87,6 +96,53 @@ public class MathFunctionsService {
 
         return entity;
     }//Преобразует DTO в сущность, чтобы сохранить ее в базе данных.
+    private MathFunctionsEntity convertToEntity(List<PointDTO> pointsDTO) {
+        MathFunctionsEntity entity = new MathFunctionsEntity();
+
+        // Преобразуем List<PointDTO> в List<PointEntity>
+        List<PointEntity> points = pointsDTO.stream()
+                .map(dto -> {
+                    PointEntity pointEntity = new PointEntity();
+                    pointEntity.setX(dto.getX());
+                    pointEntity.setY(dto.getY());
+                    // Дополнительно можно установить другие поля, если нужно
+                    return pointEntity;
+                })
+                .collect(Collectors.toList());
+
+        // Устанавливаем список точек в сущность
+        entity.setPoints(points);
+
+        // Проверяем, что список точек не пустой
+        if (points != null && !points.isEmpty()) {
+            // Находим максимальное значение x
+            Double maxX = points.stream()
+                    .map(PointEntity::getX)
+                    .max(Double::compareTo)
+                    .orElse(null);  // В случае пустого списка, возвращаем null
+
+            // Находим минимальное значение x
+            Double minX = points.stream()
+                    .map(PointEntity::getX)
+                    .min(Double::compareTo)
+                    .orElse(null);  // В случае пустого списка, возвращаем null
+
+            // Устанавливаем максимальное и минимальное значение x в сущность
+            entity.setxTo(maxX);
+            entity.setxFrom(minX);
+
+            // Устанавливаем количество точек в сущность
+            entity.setCount(points.size());
+        } else {
+            // Если список точек пустой, можно установить значения по умолчанию
+            entity.setxTo(null);
+            entity.setxFrom(null);
+            entity.setCount(0);
+        }
+
+        return entity;
+    }
+
 
     public List<MathFunctionsDTO> findsByName(String name) {
         return this.mathFunctionsRepository.findByFunctionName(name).stream().map(this::convertToDto).collect(Collectors.toList());

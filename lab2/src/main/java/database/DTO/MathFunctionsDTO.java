@@ -1,11 +1,14 @@
 package database.DTO;
 
+
 public class MathFunctionsDTO {
     private Long id;
     private String functionName;
     private Double xTo;
     private Double xFrom;
     private Integer count;
+
+
 
     public Long getId() {
         return id;
@@ -46,4 +49,6 @@ public class MathFunctionsDTO {
     public void setCount(Integer count) {
         this.count = count;
     }
+
+
 }

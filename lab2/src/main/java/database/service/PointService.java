@@ -18,7 +18,7 @@ public class PointService {
     @Autowired
     private PointRepository pointRepository;
     @Autowired
-    private MathFunctionsRepository mathFunctionsRepository;
+    private static MathFunctionsRepository mathFunctionsRepository;
 
     public PointDTO create(PointDTO dto_obj){
         PointEntity entity = convertToEntity(dto_obj);
@@ -68,7 +68,7 @@ public class PointService {
         return dto_obj;
     }
 
-    private PointEntity convertToEntity(PointDTO dto_obj){
+    public static PointEntity convertToEntity(PointDTO dto_obj){
         PointEntity entity = new PointEntity();
 
         entity.setId(dto_obj.getId());
