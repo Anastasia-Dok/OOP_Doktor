@@ -6,34 +6,80 @@
     <title>Tabulated Function App</title>
     <link rel="stylesheet" href="settings_menu/aaa.css">
     <style>
-        body {
-    font-family: Arial, sans-serif;
-}
+        button {
+        padding: 0.5em 1.5em; /* Поля по вертикали и горизонтали */
+        background-color: #fff; /* Прозрачный цвет фона */
+        font-size: 0.9em; /* Размер текста */
+        text-transform: uppercase; /* Все буквы заглавные */
+        color: #000; /* Цвет текста */
+        border: 2px solid #006400; /* Параметры рамки */
+        border-radius: 0.4em; /* Радиус скругления */
+         text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.3);
+         margin-right: 1rem;
+         transition: background-color 0.2s, box-shadow 0.2s 0.2s;
+         margin: 6px; /* Отступы между кнопками */
+         font-family: "Times New Roman", serif, Times;
+     }
 
-.container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-}
+     button:hover {
+         background-color: #8FBC8F;
+         box-shadow: 0 0 0 2px #fff, 0 0 0 4px #3f8a7c;
+     }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+    body {
+            font-family: "Times New Roman", serif, Times;
+            h1{font-size: 30px;
+            text-align: center;}
 
-table, th, td {
-    border: 1px solid black;
-}
+    }
 
-th, td {
-    padding: 8px;
-    text-align: center;
-}
+    .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+    }
 
-.hidden {
-    display: none;
-}
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+     label{
+                    font-family: "Times New Roman", serif, Times;
+                    font-weight: 600;
+                    margin: 6px;
+                    font-size: 1.4em;
+     }
+option{
+        font-family: "Times New Roman", serif, Times;
+        font-size: 1.0em;
+        }
+select{
+                    text-transform: uppercase; /* Все буквы заглавные */
+                   font-size: 0.9em; /* Размер текста */
+                   padding: 8px;
+                   margin: 10px 0;
+                   border: 2px solid #006400; /* Параметры рамки */
+                   border-radius: 0.4em; /* Радиус скругления */
+                    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.3);
+                    margin-right: 1rem;
+                    transition: background-color 0.2s, box-shadow 0.2s 0.2s;
+                    font-family: "Times New Roman", serif, Times;
+                    font-weight: 600;
+                    width: 50%;
+               }
     </style>
 </head>
 <body>
@@ -92,7 +138,7 @@ th, td {
 <body>
 <div class="container">
 
-    <button onclick="window.location.href='MainMenu.html'">Назад</button>
+    <button onclick="history.back()">Назад</button>
 </div>
 </body>
 </html>
