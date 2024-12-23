@@ -7,27 +7,65 @@
     <link rel="stylesheet" href="settings_menu/styles.css">
     <style>
     body {
-    font-family: Tahoma, sans-serif;
+     font-family: "Times New Roman", serif, Times;
+     margin: 20px;
+      h2
+      {font-size: 40px;
+      text-align: center;
+      border: 3px,solid #8B4513;
+      padding: 0.4em 0.4em;
+      border-radius: 0.4em; /* Радиус скругления */
+      }
+      h3{
+      font-size: 20px;
+      text-align: center;
+      }
+      background:
+                    url(https://i.pinimg.com/736x/52/d5/15/52d515a1c0da7d01556122c17b7b6f86.jpg)
+                   350px 950px;
+                   repeat-y; /* Повторять изображение только по вертикали */
+                    fixed; /* Зафиксировать фон */
+                    padding-right: 100px;
     }
-    .container {
-    display: flex;
-    justify-content: space-between;
+    button {
+
+                   margin: 10px 0;
+                   font-family: "Times New Roman", serif, Times;
+                   padding: 0.4em 0.4em; /* Поля по вертикали и горизонтали */
+                   background-color: #F5DEB3; /* Прозрачный цвет фона */
+                   font-size: 0.9em; /* Размер текста */
+                   text-transform: uppercase; /* Все буквы заглавные */
+                   color: #000; /* Цвет текста */
+                   border: 2px solid #D2B48C; /* Параметры рамки */
+                   border-radius: 0.4em; /* Радиус скругления */
+                    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.3);
+                    margin-right: 1rem;
+                    transition: background-color 0.2s, box-shadow 0.2s 0.2s;
+                    margin: 5px; /* Отступы между кнопками */
     }
 
+    button:hover {
+      background-color: #D2B48C;
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #D2B48C;
+    }
+
+
+    .flex-container {
+      display: flex; /* Установите flex-контейнер */
+    flex-direction: row; /* Готовим к горизонтальному расположению */
+    justify-content: center; /* Центрируем содержимое */
+     }
+
     .initial-function, .result-function {
-    width: 45%; /* Ширина каждой области */
+    /*width: 100%; /* Ширина каждой области */*/
     margin: 10px; /* Отступ между областями */
     }
 
-    table {
-    width: 100%; /* Ширина таблицы на 100% */
-    border-collapse: collapse; /* Убирает двойные границы */
-    }
-
     th, td {
-    border: 1px solid black; /* Граница ячеек */
+    border: 2px solid black; /* Граница ячеек */
     padding: 8px; /* Отступы в ячейках */
     text-align: center; /* Выравнивание текста по центру */
+    background-color: #F5DEB3;
     }
     </style>
 
@@ -36,41 +74,43 @@
 <h2>Дифференцирование функции</h2>
 <button onclick="window.location.href='MainMenu.html'">Назад</button>
 <div id="differentiationWindow" class="modal">
-    <div class="modal-content">
-        <div class="content">
-            <div class="initial-function">
-                <h3>Начальная функция</h3>
-                <table id="initialFunctionTable">
-                    <thead>
-                    <tr>
-                        <th>X</th>
-                        <th>Y</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- Предполагается, что строки будут добавлены динамически -->
-                    </tbody>
-                </table>
+    <div class ="flex-container">
+        <div class="modal-content">
+            <div class="content">
+                <div class="initial-function">
+                    <h3>Начальная функция</h3>
+                    <table id="initialFunctionTable">
+                        <thead>
+                        <tr>
+                            <th>X</th>
+                            <th>Y</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Предполагается, что строки будут добавлены динамически -->
+                        </tbody>
+                    </table>
+                </div>
+                <button onclick="window.location.href='index.html'">Создать из массивов</button>
+                <button onclick="window.location.href='CreateFromFunc.html'">Создать из другой функции</button>
+                <button onclick="uploadFunction('first')">Загрузить</button>
+                <button onclick="saveFunction('first')">Сохранить</button>
+                <div class="result-function">
+                    <h3>Результат дифференцирования</h3>
+                    <table id="resultFunctionTable">
+                        <thead>
+                        <tr>
+                            <th>X</th>
+                            <th>dY/dX</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Результат будет добавлен здесь -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <button onclick="window.location.href='index.html'">Создать из массивов</button>
-            <button onclick="window.location.href='CreateFromFunc.html'">Создать из другой функции</button>
-            <button onclick="uploadFunction('first')">Загрузить</button>
-            <button onclick="saveFunction('first')">Сохранить</button>
-            <div class="result-function">
-                <h3>Результат дифференцирования</h3>
-                <table id="resultFunctionTable">
-                    <thead>
-                    <tr>
-                        <th>X</th>
-                        <th>dY/dX</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- Результат будет добавлен здесь -->
-                    </tbody>
-                </table>
-            </div>
+            <button id="differentiateButton">Дифференцировать</button>
         </div>
-        <button id="differentiateButton">Дифференцировать</button>
     </div>
 </div>
