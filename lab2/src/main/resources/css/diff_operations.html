@@ -57,7 +57,7 @@
      }
 
     .initial-function, .result-function {
-    /*width: 100%; /* Ширина каждой области */*/
+    width: 100%;
     margin: 10px; /* Отступ между областями */
     }
 
@@ -78,9 +78,9 @@
         <div class="modal-content">
             <div class="content">
                 <div class="initial-function">
-                    <h3>Начальная функция</h3>
                     <table id="initialFunctionTable">
                         <thead>
+                        <tr><th colspan="2">Начальная Функция</th></tr>
                         <tr>
                             <th>X</th>
                             <th>Y</th>
@@ -96,11 +96,13 @@
                 <button onclick="uploadFunction('first')">Загрузить</button>
                 <button onclick="saveFunction('first')">Сохранить</button>
                 <div class="result-function">
-                    <h3>Результат дифференцирования</h3>
+
                     <table id="resultFunctionTable">
                         <thead>
                         <tr>
-                            <th>X</th>
+                            <th>Результат дифференцирования</th>
+                        </tr>
+                        <tr>
                             <th>dY/dX</th>
                         </tr>
                         </thead>
