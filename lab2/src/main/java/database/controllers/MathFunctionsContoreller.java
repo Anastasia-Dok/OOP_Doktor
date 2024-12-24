@@ -1,9 +1,6 @@
 package database.controllers;
 
 
-import database.DTO.PointDTO;
-import database.entity.PointEntity;
-import database.service.PointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +8,6 @@ import database.DTO.MathFunctionsDTO;
 import database.service.MathFunctionsService;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/functions")
@@ -23,16 +19,16 @@ public class MathFunctionsContoreller {
     public MathFunctionsContoreller(MathFunctionsService mathFunctionsService) {
         this.mathFunctionsService = mathFunctionsService;
     }
-//- Метод принимает данные о математической функции в формате JSON
+    //- Метод принимает данные о математической функции в формате JSON
 // в теле запроса и преобразует их в объект MathFunctionsDTO.
 //   - Сервис mathFunctionsService вызывается для создания новой функции.
 //   - Возвращается HTTP-ответ с кодом 200 (OK) и созданным объектом.
-    @PostMapping("/functions/dto")
+    @PostMapping
     public ResponseEntity<MathFunctionsDTO> create(@RequestBody MathFunctionsDTO dto_obj){
         MathFunctionsDTO response = mathFunctionsService.create(dto_obj);
         return ResponseEntity.ok(response);
     }
-// - Метод принимает идентификатор функции из URL и получает соответствующий объект через сервис.
+    // - Метод принимает идентификатор функции из URL и получает соответствующий объект через сервис.
 //   - Возвращается HTTP-ответ с кодом 200 и найденным объектом.
     @GetMapping("/{id}")
     public ResponseEntity<MathFunctionsDTO> read(@PathVariable long id){
@@ -66,17 +62,5 @@ public class MathFunctionsContoreller {
         }
         return ResponseEntity.ok(functions);
     }//- Если функции найдены, возвращается список с кодом 200 (OK).
-   //- Если список пуст, возвращается код 204 (No Content).
-
-    @PostMapping
-    public ResponseEntity<MathFunctionsDTO> createFromPoints(@RequestBody List<PointDTO> dto_obj){
-        // Преобразуем List<PointDTO> в List<PointEntity с помощью PointService
-
-
-        // Передаем в MathFunctionsService для создания MathFunctionsDTO
-        MathFunctionsDTO response = mathFunctionsService.createFromPoints(dto_obj);
-
-        return ResponseEntity.ok(response);
-    }
-
+    //- Если список пуст, возвращается код 204 (No Content).
 }
