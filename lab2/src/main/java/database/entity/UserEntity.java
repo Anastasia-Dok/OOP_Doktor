@@ -1,5 +1,6 @@
-package database.security;
+package database.entity;
 
+import database.security.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -105,3 +106,4 @@ public class UserEntity implements UserDetails {
 
 
 }
+

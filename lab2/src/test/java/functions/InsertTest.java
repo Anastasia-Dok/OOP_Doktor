@@ -5,15 +5,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class InsertTest {
-    private ArrayTabulateFunction arr;
-    private LinkedListTabulateFunction list;
+    private ArrayTabulatedFunction arr;
+    private LinkedListTabulatedFunction list;
     private double[] arrX = new double[]{1, 2, 3, 4, 5, 6};
     private double[] arrY = new double[]{1, 2, 3, 4, 5, 6};
 
     @BeforeEach
     void createArr() {
-        arr = new ArrayTabulateFunction(arrX, arrY);
-        list = new LinkedListTabulateFunction(arrX, arrY);
+        arr = new ArrayTabulatedFunction(arrX, arrY);
+        list = new LinkedListTabulatedFunction(arrX, arrY);
     }
 
     @Test

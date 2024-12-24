@@ -87,6 +87,12 @@
             <artifactId>jjwt</artifactId>
             <version>0.9.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.10.2</version> <!-- Убедитесь, что используете последнюю версию -->
+        </dependency>
+
     </dependencies>
 
     <build>

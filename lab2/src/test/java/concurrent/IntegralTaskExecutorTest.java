@@ -1,6 +1,6 @@
 package concurrent;
 
-import functions.ArrayTabulateFunction;
+import functions.ArrayTabulatedFunction;
 import functions.TabulatedFunction;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +22,7 @@ class IntegralTaskExecutorTest {
         // Создаем функцию с константными значениями y = 5 на интервале [0, 10]
         double[] xValues = {0.0, 5.0, 10.0};
         double[] yValues = {5.0, 5.0, 5.0};
-        TabulatedFunction constantFunction = new ArrayTabulateFunction(xValues, yValues);
+        TabulatedFunction constantFunction = new ArrayTabulatedFunction(xValues, yValues);
 
         // Интеграл от константной функции y = 5 на интервале [0, 10] должен быть 50
         double result = executor.integrate(constantFunction);
@@ -46,7 +46,7 @@ class IntegralTaskExecutorTest {
         // Создаем функцию с константными значениями y = 5 на интервале [0, 10]
         double[] xValues = {0.0, 5.0, 10.0};
         double[] yValues = {5.0, 5.0, 5.0};
-        TabulatedFunction constantFunction = new ArrayTabulateFunction(xValues, yValues);
+        TabulatedFunction constantFunction = new ArrayTabulatedFunction(xValues, yValues);
 
         // Интеграл от константной функции y = 5 на интервале [0, 10] должен быть 50
         double result = executor.integrate(constantFunction);
@@ -58,7 +58,7 @@ class IntegralTaskExecutorTest {
         // Создаем функцию y = x на интервале [0, 10]
         double[] xValues = {0, 1};
         double[] yValues = {0, 1};
-        TabulatedFunction linearFunction = new ArrayTabulateFunction(xValues, yValues);
+        TabulatedFunction linearFunction = new ArrayTabulatedFunction(xValues, yValues);
 
         double result = executor.integrate(linearFunction);
         assertEquals(0.5, result, 0.1);
@@ -69,7 +69,7 @@ class IntegralTaskExecutorTest {
         // Создаем квадратичную функцию y = x^2 на интервале [0, 10]
         double[] xValues = {0.0, 0.5, 1.0};
         double[] yValues = {0.0, 0.25, 1.0};
-        TabulatedFunction quadraticFunction = new ArrayTabulateFunction(xValues, yValues);
+        TabulatedFunction quadraticFunction = new ArrayTabulatedFunction(xValues, yValues);
 
         // Интеграл от квадратичной функции y = x^2 на интервале [0, 10] должен быть ~333.33
         double result = executor.integrate(quadraticFunction);
@@ -82,7 +82,7 @@ class IntegralTaskExecutorTest {
         // Создаем функцию с константными значениями y = -3 на интервале [0, 10]
         double[] xValues = {0.0, 5.0, 10.0};
         double[] yValues = {-3.0, -3.0, -3.0};
-        TabulatedFunction constantFunction = new ArrayTabulateFunction(xValues, yValues);
+        TabulatedFunction constantFunction = new ArrayTabulatedFunction(xValues, yValues);
 
         // Интеграл от константной функции y = -3 на интервале [0, 10] должен быть -30
         double result = executor.integrate(constantFunction);
@@ -94,7 +94,7 @@ class IntegralTaskExecutorTest {
 
         double[] xValues = {0.0, 5.0, 10.0};
         double[] yValues = {-3.0, -3.0, -3.0};
-        TabulatedFunction constantFunction = new ArrayTabulateFunction(xValues, yValues);
+        TabulatedFunction constantFunction = new ArrayTabulatedFunction(xValues, yValues);
 
         assertThrows(IllegalArgumentException.class, () -> new IntegralTask(constantFunction,10,2));
         assertThrows(IllegalArgumentException.class, ()-> new IntegralTask(null,1,10));
