@@ -1,7 +1,7 @@
 package io;
 
-import functions.ArrayTabulateFunction;
-import functions.LinkedListTabulateFunction;
+import functions.ArrayTabulatedFunction;
+import functions.LinkedListTabulatedFunction;
 
 
 
@@ -20,8 +20,8 @@ public class TabulatedFunctionFileWriter {
         try (BufferedWriter arrayWriter = new BufferedWriter(new FileWriter("output/array function.txt"));
              BufferedWriter linkedListWriter = new BufferedWriter(new FileWriter("output/linked list function.txt"))) {
 
-            FunctionsIO.writeTabulatedFunction(arrayWriter, new ArrayTabulateFunction(xValues, yValues));
-            FunctionsIO.writeTabulatedFunction(linkedListWriter, new LinkedListTabulateFunction(xValues, yValues));
+            FunctionsIO.writeTabulatedFunction(arrayWriter, new ArrayTabulatedFunction(xValues, yValues));
+            FunctionsIO.writeTabulatedFunction(linkedListWriter, new LinkedListTabulatedFunction(xValues, yValues));
 
         } catch (IOException e) {
             e.printStackTrace();

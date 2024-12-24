@@ -2,7 +2,7 @@ package io;
 
 import functions.TabulatedFunction;
 import functions.factory.ArrayTabulatedFunctionFactory;
-import functions.factory.LinkedListTabulateFunctionFactory;
+import functions.factory.LinkedListTabulatedFunctionFactory;
 import operations.TabulatedDifferentialOperator;
 
 import java.io.*;
@@ -27,9 +27,9 @@ public class TabulatedFunctionFileInputStream {
             InputStreamReader reader = new InputStreamReader(System.in);
             BufferedReader bufferedReader = new BufferedReader(reader);
 
-            TabulatedFunction consoleFunction = readTabulatedFunction(bufferedReader, new LinkedListTabulateFunctionFactory());
+            TabulatedFunction consoleFunction = readTabulatedFunction(bufferedReader, new LinkedListTabulatedFunctionFactory());
 
-            System.out.println(new TabulatedDifferentialOperator(new LinkedListTabulateFunctionFactory()).derive(consoleFunction).toString());
+            System.out.println(new TabulatedDifferentialOperator(new LinkedListTabulatedFunctionFactory()).derive(consoleFunction).toString());
         } catch (IOException e) {
             e.printStackTrace();
         }

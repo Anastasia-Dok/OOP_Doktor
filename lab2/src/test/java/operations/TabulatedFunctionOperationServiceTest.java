@@ -1,8 +1,8 @@
 package operations;
 
 import functions.TabulatedFunction;
-import functions.ArrayTabulateFunction;
-import functions.LinkedListTabulateFunction;
+import functions.ArrayTabulatedFunction;
+import functions.LinkedListTabulatedFunction;
 import functions.Point;
 import functions.factory.*;
 
@@ -14,7 +14,7 @@ public class TabulatedFunctionOperationServiceTest {
 
     @Test
     public void testAsPointsForArrayFunction() {
-        ArrayTabulateFunction function = new ArrayTabulateFunction(
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(
                 new double[]{1.0, 2.0, 3.0},
                 new double[]{4.0, 5.0, 6.0}
         );
@@ -28,7 +28,7 @@ public class TabulatedFunctionOperationServiceTest {
 
     @Test
     public void testAsPointsForLinkedListFunction() {
-        LinkedListTabulateFunction function = new LinkedListTabulateFunction(
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(
                 new double[]{1.0, 2.0, 3.0},
                 new double[]{4.0, 5.0, 6.0}
         );
@@ -47,8 +47,8 @@ public class TabulatedFunctionOperationServiceTest {
         double[] yValuesB = {7.0, 8.0, 9.0};
         TabulatedFunctionFactory factory = new ArrayTabulatedFunctionFactory();
         TabulatedFunctionOperationService service = new TabulatedFunctionOperationService(factory);
-        ArrayTabulateFunction functionA = new ArrayTabulateFunction(xValues, yValuesA);
-        ArrayTabulateFunction functionB = new ArrayTabulateFunction(xValues, yValuesB);
+        ArrayTabulatedFunction functionA = new ArrayTabulatedFunction(xValues, yValuesA);
+        ArrayTabulatedFunction functionB = new ArrayTabulatedFunction(xValues, yValuesB);
         TabulatedFunction result = service.add(functionA, functionB);
         assertEquals(11.0, result.apply(1.0), 0.0001);
         assertEquals(13.0, result.apply(2.0), 0.0001);
@@ -61,8 +61,8 @@ public class TabulatedFunctionOperationServiceTest {
         double[] yValuesB = {2.0, 3.0, 10.0};
         TabulatedFunctionFactory factory = new ArrayTabulatedFunctionFactory();
         TabulatedFunctionOperationService service = new TabulatedFunctionOperationService(factory);
-        ArrayTabulateFunction functionA = new ArrayTabulateFunction(xValues, yValuesA);
-        ArrayTabulateFunction functionB = new ArrayTabulateFunction(xValues, yValuesB);
+        ArrayTabulatedFunction functionA = new ArrayTabulatedFunction(xValues, yValuesA);
+        ArrayTabulatedFunction functionB = new ArrayTabulatedFunction(xValues, yValuesB);
         TabulatedFunction result = service.subtract(functionA, functionB);
         assertEquals(6.0, result.apply(1.0), 0.0001);
         assertEquals(12.0, result.apply(2.0), 0.0001);
@@ -78,8 +78,8 @@ public class TabulatedFunctionOperationServiceTest {
         TabulatedFunctionFactory factory = new ArrayTabulatedFunctionFactory();
         TabulatedFunctionOperationService service = new TabulatedFunctionOperationService(factory);
 
-        ArrayTabulateFunction functionA = new ArrayTabulateFunction(xValues, yValuesA);
-        ArrayTabulateFunction functionB = new ArrayTabulateFunction(xValues, yValuesB);
+        ArrayTabulatedFunction functionA = new ArrayTabulatedFunction(xValues, yValuesA);
+        ArrayTabulatedFunction functionB = new ArrayTabulatedFunction(xValues, yValuesB);
 
         TabulatedFunction result = service.multiply(functionA, functionB);
 
@@ -97,8 +97,8 @@ public class TabulatedFunctionOperationServiceTest {
         TabulatedFunctionFactory factory = new ArrayTabulatedFunctionFactory();
         TabulatedFunctionOperationService service = new TabulatedFunctionOperationService(factory);
 
-        ArrayTabulateFunction functionA = new ArrayTabulateFunction(xValues, yValuesA);
-        ArrayTabulateFunction functionB = new ArrayTabulateFunction(xValues, yValuesB);
+        ArrayTabulatedFunction functionA = new ArrayTabulatedFunction(xValues, yValuesA);
+        ArrayTabulatedFunction functionB = new ArrayTabulatedFunction(xValues, yValuesB);
 
         TabulatedFunction result = service.devide(functionA, functionB);
 

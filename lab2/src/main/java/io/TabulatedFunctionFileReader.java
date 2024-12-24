@@ -2,7 +2,7 @@ package io;
 
 import functions.TabulatedFunction;
 import functions.factory.ArrayTabulatedFunctionFactory;
-import functions.factory.LinkedListTabulateFunctionFactory;
+import functions.factory.LinkedListTabulatedFunctionFactory;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class TabulatedFunctionFileReader{
             System.out.println(arrayFunction);
 
             // Чтение функции с использованием фабрики для связного списка
-            TabulatedFunction linkedListFunction = FunctionsIO.readTabulatedFunction(readerLinkedList, new LinkedListTabulateFunctionFactory());
+            TabulatedFunction linkedListFunction = FunctionsIO.readTabulatedFunction(readerLinkedList, new LinkedListTabulatedFunctionFactory());
             System.out.println("LinkedListTabulatedFunction:");
             System.out.println(linkedListFunction);
 

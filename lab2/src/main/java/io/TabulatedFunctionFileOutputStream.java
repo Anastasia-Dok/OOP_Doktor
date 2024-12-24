@@ -1,6 +1,6 @@
 package io;
-import functions.ArrayTabulateFunction;
-import functions.LinkedListTabulateFunction;
+import functions.ArrayTabulatedFunction;
+import functions.LinkedListTabulatedFunction;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
@@ -16,8 +16,8 @@ public class TabulatedFunctionFileOutputStream {
             BufferedOutputStream bufferedOutputStream1 = new BufferedOutputStream(outputStream1);
             BufferedOutputStream bufferedOutputStream2 = new BufferedOutputStream(outputStream2);
 
-            ArrayTabulateFunction arrayFunction = new ArrayTabulateFunction(new double[]{1.0, 2.0, 3.0}, new double[]{2.0, 4.0, 6.0});
-            LinkedListTabulateFunction linkedListFunction = new LinkedListTabulateFunction(new double[]{1.0, 2.0, 3.0}, new double[]{3.0, 6.0, 9.0});
+            ArrayTabulatedFunction arrayFunction = new ArrayTabulatedFunction(new double[]{1.0, 2.0, 3.0}, new double[]{2.0, 4.0, 6.0});
+            LinkedListTabulatedFunction linkedListFunction = new LinkedListTabulatedFunction(new double[]{1.0, 2.0, 3.0}, new double[]{3.0, 6.0, 9.0});
 
             writeTabulatedFunction(bufferedOutputStream1, arrayFunction);
             writeTabulatedFunction(bufferedOutputStream2, linkedListFunction);
