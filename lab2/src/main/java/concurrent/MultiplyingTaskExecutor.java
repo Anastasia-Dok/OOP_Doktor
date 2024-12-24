@@ -1,6 +1,6 @@
 package concurrent;
 
-import functions.LinkedListTabulateFunction;
+import functions.LinkedListTabulatedFunction;
 import functions.TabulatedFunction;
 import functions.UnitFunction;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MultiplyingTaskExecutor {
     public static void main(String[] args) {
-        TabulatedFunction function = new LinkedListTabulateFunction( new UnitFunction(), 1,1000,1000);
+        TabulatedFunction function = new LinkedListTabulatedFunction( new UnitFunction(), 1,1000,1000);
 
         //Создание листа потоков
         List<Thread> threads = new ArrayList<>();

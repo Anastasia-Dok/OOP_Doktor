@@ -1,20 +1,29 @@
 package functions;
 
+import functions.MathFunction;
+
 public class ConstantFunction implements MathFunction {
     private final double consta;
 
+    //конструктор
+
+    public ConstantFunction(){
+        this.consta = 0;
+    }
+
+    public ConstantFunction(double x) {
+        this.consta = x;
+    }
+
+    // Метод apply, который всегда возвращает константу
+    @Override
     public double apply(double x) {
         return consta;
     }
 
-    public ConstantFunction(double consta) {
-        this.consta = consta;
-    }
-
-
-    public double getConst() {
+    // Геттер для получения значения константы
+    public double getConstant() {
         return consta;
     }
-
-
 }
+
