@@ -1,4 +1,4 @@
-package web.security;
+package database.security;
 
 import functions.factory.ArrayTabulatedFunctionFactory;
 import org.springframework.security.core.Authentication;

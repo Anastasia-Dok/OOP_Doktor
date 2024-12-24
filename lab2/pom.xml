@@ -92,6 +92,11 @@
             <artifactId>reflections</artifactId>
             <version>0.10.2</version> <!-- Убедитесь, что используете последнюю версию -->
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
 
     </dependencies>
 

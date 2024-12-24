@@ -1,58 +1,58 @@
 package database.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+@Profile("!test") // Эта конфигурация не будет активна в тестах
+public class SecurityConfig {
 
-    private final CustomUserDetailsService userDetailsService;
-    private final PasswordEncoder passwordEncoder;
-
-    public SecurityConfig(CustomUserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
-        this.userDetailsService = userDetailsService;
-        this.passwordEncoder = passwordEncoder;
+    @Bean
+    public LoginSuccessHandler loginSuccessHandler() {
+        return new LoginSuccessHandler();
     }
 
-    @Autowired
-    private JwtUtil jwtUtil;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf()
-                .disable()
-                .cors()
-                .disable()
+                .csrf().disable() // Для разработки. В продакшене лучше включить!
+                .cors().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/user/register").permitAll()
-                .antMatchers(HttpMethod.POST, "/user/login").permitAll()
-                .anyRequest().authenticated()
+                //TODO запросы убрать
+                .antMatchers("/login", "/register","/css/**","/registere").permitAll() // Разрешить доступ без аутентификации
+                .anyRequest().authenticated() // Остальные запросы требуют аутентификации
                 .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .formLogin()
+                .loginPage("/login") // Указание кастомной страницы логина
+                .successHandler(loginSuccessHandler())
+                .permitAll()
                 .and()
-                .addFilterBefore(new JwtAuthenticationFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout") // После выхода
+                .permitAll()
+                .and()
+                .sessionManagement()
+                .maximumSessions(1) // Разрешить одну активную сессию
+                .maxSessionsPreventsLogin(false); // При повторной попытке входа завершать старую сессию
+        return http.build();
     }
 
     @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+        return authConfig.getAuthenticationManager();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
