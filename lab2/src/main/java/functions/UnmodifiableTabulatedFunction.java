@@ -2,6 +2,9 @@ package functions;
 
 import java.util.Iterator;
 
+import functions.TabulatedFunction;
+import functions.Iterable;
+
 public class UnmodifiableTabulatedFunction implements TabulatedFunction {
     private final TabulatedFunction function;
 
@@ -26,7 +29,7 @@ public class UnmodifiableTabulatedFunction implements TabulatedFunction {
 
     @Override
     public void setY(int index, double value) {
-        throw new UnsupportedOperationException("Modification is not supported for UnmodifiableTabulatedFunction.");
+        throw new UnsupportedOperationException("Modification of Y values is not supported.");
     }
 
     @Override
@@ -50,6 +53,16 @@ public class UnmodifiableTabulatedFunction implements TabulatedFunction {
     }
 
     @Override
+    public double[] getXValues() {
+        return function.getXValues();
+    }
+
+    @Override
+    public double[] getYValues() {
+        return function.getYValues();
+    }
+
+    @Override
     public double apply(double x) {
         return function.apply(x);
     }
@@ -57,5 +70,16 @@ public class UnmodifiableTabulatedFunction implements TabulatedFunction {
     @Override
     public Iterator<Point> iterator() {
         return function.iterator();
+
+    }
+
+    @Override
+    public void insert(double x, double y) {
+        function.insert(x,y);
+    }
+
+    @Override
+    public void remove(int index) {
+        function.remove(index);
     }
 }
