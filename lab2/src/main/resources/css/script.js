@@ -1,12 +1,6 @@
 document.getElementById('createTableButton').addEventListener('click', function() {
     const pointCount = parseInt(document.getElementById('pointCount').value);
     const tableBody = document.getElementById('dataTable').querySelector('tbody');
- // Проверяем количество точек
-    if (pointCount < 2) {
-        errorMessage.textContent = "Количество точек не должно быть меньше 2!";
-        $('#errorModal').modal('show');
-        return;
-    }
 
     // Очищаем существующие строки в таблице
     while (tableBody.firstChild) {
@@ -29,7 +23,7 @@ document.getElementById('createFunctionButton').addEventListener('click', functi
     const xValues = Array.from(document.querySelectorAll('.x-value')).map(input => parseFloat(input.value));
     const yValues = Array.from(document.querySelectorAll('.y-value')).map(input => parseFloat(input.value));
 
-    // Здесь вызов фабрику для создания TabulatedFunction с xValues и yValues
+    // Здесь вызовите фабрику для создания TabulatedFunction с xValues и yValues
     const tabulatedFunction = createTabulatedFunction(xValues, yValues);
     console.log(tabulatedFunction); // Логирование для проверки
 
