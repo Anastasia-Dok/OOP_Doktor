@@ -1,17 +1,20 @@
 package concurrent;
 
-import functions.TabulatedFunction;
 import functions.Point;
+import functions.TabulatedFunction;
 import operations.TabulatedFunctionOperationService;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class SynchronizedTabulatedFunction implements TabulatedFunction {
+
     private final TabulatedFunction function;
 
     public SynchronizedTabulatedFunction(TabulatedFunction function) {
         this.function = function;
     }
+
     @Override
     public int getCount() {
         synchronized (function){
@@ -69,6 +72,16 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
     }
 
     @Override
+    public double[] getXValues() {
+        return function.getXValues();
+    }
+
+    @Override
+    public double[] getYValues() {
+        return function.getYValues();
+    }
+
+    @Override
     public double apply(double x) {
         synchronized (function){
             return function.apply(x);
@@ -81,7 +94,7 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
             Point[] points = TabulatedFunctionOperationService.asPoints(this.function);
 
             return new Iterator<Point>() {
-                private int i = 0;
+                private int i = 0; // индекс
 
                 @Override
                 public boolean hasNext() {
@@ -91,11 +104,11 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
                 @Override
                 public Point next() {
                     if (!hasNext()) {
-                        throw new NoSuchElementException();
+                        throw new NoSuchElementException("No more elements available.");
                     }
-                    //объект Point из xValues и yValues
+                    // Создаем объект Point на основе xValues и yValues
                     Point point = new Point(points[i].x, points[i].y);
-                    i++;
+                    i++; // увеличиваем индекс
                     return point;
                 }
             };
@@ -103,16 +116,24 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
         }
     }
 
+    @Override
+    public void remove(int index) {
+        function.remove(index);
+    }
+
     public interface Operation<T> {
         T apply(SynchronizedTabulatedFunction function);
     }
-    public <T> T doSynchronously(Operation<? extends T> operation ){
-        synchronized (function){
+
+    public <T> T doSynchronously(Operation<? extends T> operation) {
+        synchronized (function) {
             return operation.apply(this);
         }
     }
 
-
-
-
+    @Override
+    public void insert(double x, double y) {
+        function.insert(x,y);
+    }
 }
+

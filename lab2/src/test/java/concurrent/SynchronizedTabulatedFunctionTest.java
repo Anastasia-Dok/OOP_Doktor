@@ -13,7 +13,7 @@ public class SynchronizedTabulatedFunctionTest {
     void indexOfXTest1() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         assertEquals(4, func.indexOfX(5));
     }
 
@@ -21,7 +21,7 @@ public class SynchronizedTabulatedFunctionTest {
     void indexOfXTest2() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
         assertEquals(-1, wrapper.indexOfX(6));
     }
@@ -30,7 +30,7 @@ public class SynchronizedTabulatedFunctionTest {
     void indexOfYTest1() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
         assertEquals(-1, wrapper.indexOfY(6));
     }
@@ -39,7 +39,7 @@ public class SynchronizedTabulatedFunctionTest {
     void indexOfYTest2() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
         assertEquals(1, wrapper.indexOfY(2));
     }
@@ -48,7 +48,7 @@ public class SynchronizedTabulatedFunctionTest {
     void leftBoundTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
         assertEquals(1, wrapper.leftBound());
     }
@@ -57,7 +57,7 @@ public class SynchronizedTabulatedFunctionTest {
     void rightBoundTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
         assertEquals(5, wrapper.rightBound());
     }
@@ -67,7 +67,7 @@ public class SynchronizedTabulatedFunctionTest {
     void extrapolateLeftTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
         assertEquals(arrY[0] + (arrY[1] - arrY[0]) / (arrX[1] - arrX[0]) * (-1 - arrX[0]),wrapper.apply(-1) );
     }
@@ -76,7 +76,7 @@ public class SynchronizedTabulatedFunctionTest {
     void extrapolateRightTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
         assertEquals(arrY[func.getCount() - 2] + (arrY[func.getCount() - 1] - arrY[func.getCount() - 2]) / (arrX[func.getCount() - 1] - arrX[func.getCount() - 2]) * (6 - arrX[func.getCount() - 2]), wrapper.apply(6));
     }
@@ -86,7 +86,7 @@ public class SynchronizedTabulatedFunctionTest {
     void getXTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
         assertEquals(4, wrapper.getX(3));
     }
@@ -95,7 +95,7 @@ public class SynchronizedTabulatedFunctionTest {
     void getYTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
         assertEquals(3, wrapper.getX(2));
     }
@@ -104,7 +104,7 @@ public class SynchronizedTabulatedFunctionTest {
     void setYTest() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulateFunction func = new ArrayTabulateFunction(arrX, arrY);
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
         wrapper.setY(2, 5);
         assertEquals(5, wrapper.getY(2));
@@ -112,7 +112,7 @@ public class SynchronizedTabulatedFunctionTest {
 
     @Test
     void constructFunction() {
-        ArrayTabulateFunction func = new ArrayTabulateFunction(new SqrFunction(), 0, 5, 6);
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(new SqrFunction(), 0, 5, 6);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
         boolean b = false;
         for (int i = 0; i < wrapper.getCount(); i++) {
@@ -124,7 +124,7 @@ public class SynchronizedTabulatedFunctionTest {
 
     @Test
     void constructFunction2() {
-        ArrayTabulateFunction func = new ArrayTabulateFunction(new SqrFunction(), 5, 0, 6);
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(new SqrFunction(), 5, 0, 6);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
         boolean b = false;
         for (int i = 0; i < wrapper.getCount(); i++) {
@@ -136,7 +136,7 @@ public class SynchronizedTabulatedFunctionTest {
 
     @Test
     void iteratorTest1(){
-        ArrayTabulateFunction arr = new ArrayTabulateFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
+        ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(arr);
         Iterator<Point> iterator = wrapper.iterator();
         int j = 0;
@@ -149,7 +149,7 @@ public class SynchronizedTabulatedFunctionTest {
 
     @Test
     void iteratorTest2(){
-        ArrayTabulateFunction arr = new ArrayTabulateFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
+        ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(arr);
         int j = 0;
         for (Point point : wrapper) {
@@ -162,7 +162,7 @@ public class SynchronizedTabulatedFunctionTest {
     @Test
     void iteratorSyncArr()
     {
-        SynchronizedTabulatedFunction arr = new SynchronizedTabulatedFunction(new ArrayTabulateFunction(new double[]{1,2,3},new double[]{4,5,6}));
+        SynchronizedTabulatedFunction arr = new SynchronizedTabulatedFunction(new ArrayTabulatedFunction(new double[]{1,2,3},new double[]{4,5,6}));
         Point[] points = new Point[3];
         int i =0;
         for(Point p: arr)
@@ -175,7 +175,7 @@ public class SynchronizedTabulatedFunctionTest {
     @Test
     void iteratorSyncLinkedList()
     {
-        SynchronizedTabulatedFunction list = new SynchronizedTabulatedFunction(new LinkedListTabulateFunction(new double[]{1,2,3},new double[]{4,5,6}));
+        SynchronizedTabulatedFunction list = new SynchronizedTabulatedFunction(new LinkedListTabulatedFunction(new double[]{1,2,3},new double[]{4,5,6}));
         Point[] points = new Point[3];
         int i =0;
         for(Point p: list)
@@ -189,7 +189,7 @@ public class SynchronizedTabulatedFunctionTest {
     @Test
     public void testDoSynchronouslyWithReturnValue() {
         // Создаем табулированную функцию
-        TabulatedFunction function = new LinkedListTabulateFunction(new UnitFunction(), 1, 10, 10);
+        TabulatedFunction function = new LinkedListTabulatedFunction(new UnitFunction(), 1, 10, 10);
         SynchronizedTabulatedFunction synchronizedFunction = new SynchronizedTabulatedFunction(function);
 
         // Операция получения значения y по индексу
@@ -200,7 +200,7 @@ public class SynchronizedTabulatedFunctionTest {
 
     @Test
     public void testDoSynchronouslyWithoutReturnValue() {
-        TabulatedFunction function = new LinkedListTabulateFunction(new UnitFunction(), 1, 10, 10);
+        TabulatedFunction function = new LinkedListTabulatedFunction(new UnitFunction(), 1, 10, 10);
         SynchronizedTabulatedFunction synchronizedFunction = new SynchronizedTabulatedFunction(function);
 
         // Операция изменения значения y по индексу (без возвращаемого значения)
