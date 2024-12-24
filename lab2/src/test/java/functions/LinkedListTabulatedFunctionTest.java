@@ -10,14 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class LinkedListTabulatedFunctionTest {
-    private LinkedListTabulateFunction list;
+    private LinkedListTabulatedFunction list;
     private double[] a = {0, 1, 2, 3, 4, 5, 6, 7};
     private double[] b = {0, 1, 4, 9, 16, 25, 36, 49};
 
     @Test
     void createList4argumentsTestInts() {
         MathFunction func = new SqrFunction();
-        list = new LinkedListTabulateFunction(func, 0, 10, 11);
+        list = new LinkedListTabulatedFunction(func, 0, 10, 11);
         for (int i = 0; i < 11; i++) {
             System.out.println(list.getY(i));
         }
@@ -26,7 +26,7 @@ public class LinkedListTabulatedFunctionTest {
     @Test
     void createList4argumentsTestRotating() {
         MathFunction func = new SqrFunction();
-        list = new LinkedListTabulateFunction(func, 10, 0, 11);
+        list = new LinkedListTabulatedFunction(func, 10, 0, 11);
         for (int i = 0; i < 11; i++) {
             System.out.println(list.getY(i));
         }
@@ -35,7 +35,7 @@ public class LinkedListTabulatedFunctionTest {
     @Test
     void createList4argumentsTestSimilar() {
         MathFunction func = new SqrFunction();
-        list = new LinkedListTabulateFunction(func, 10, 10, 10);
+        list = new LinkedListTabulatedFunction(func, 10, 10, 10);
         for (int i = 0; i < 11; i++) {
             System.out.println(list.getY(i));
         }
@@ -44,7 +44,7 @@ public class LinkedListTabulatedFunctionTest {
     @Test
     void createList4argumentsTestDoubles() {
         MathFunction func = new SqrFunction();
-        list = new LinkedListTabulateFunction(func, 5.5, 13.2, 4);
+        list = new LinkedListTabulatedFunction(func, 5.5, 13.2, 4);
         for (int i = 0; i < 4; i++) {
             System.out.println(list.getY(i));
         }
@@ -52,7 +52,7 @@ public class LinkedListTabulatedFunctionTest {
 
     @BeforeEach
     void createList2argumentsTest() {
-        list = new LinkedListTabulateFunction(a, b);
+        list = new LinkedListTabulatedFunction(a, b);
     }
 
     @Test
@@ -236,10 +236,10 @@ public class LinkedListTabulatedFunctionTest {
     @Test
     void exceptionsConstructorTest()
     {
-        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulateFunction(new double[]{1},new double[]{1}));
-        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulateFunction(new double[]{},new double[]{}));
-        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulateFunction(new SqrFunction(),1,10,1));
-        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulateFunction(new SqrFunction(),1,10,0));
+        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulatedFunction(new double[]{1},new double[]{1}));
+        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulatedFunction(new double[]{},new double[]{}));
+        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulatedFunction(new SqrFunction(),1,10,1));
+        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulatedFunction(new SqrFunction(),1,10,0));
     }
     @Test
     void exceptionsSetTest()
@@ -252,7 +252,7 @@ public class LinkedListTabulatedFunctionTest {
         double[] xValues = {1.0, 2.0, 3.0};
         double[] yValues = {4.0, 5.0, 6.0};
 
-        LinkedListTabulateFunction linkedListFunction = new LinkedListTabulateFunction(xValues, yValues);
+        LinkedListTabulatedFunction linkedListFunction = new LinkedListTabulatedFunction(xValues, yValues);
         assertThrows(InterpolationException.class,
                 () -> linkedListFunction.interpolate(3.5, linkedListFunction.floorNodeOfX(1)));
     }

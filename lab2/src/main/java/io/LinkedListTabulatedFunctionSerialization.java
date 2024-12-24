@@ -1,8 +1,8 @@
 package io;
 
-import functions.LinkedListTabulateFunction;
+import functions.LinkedListTabulatedFunction;
 import functions.TabulatedFunction;
-import functions.factory.LinkedListTabulateFunctionFactory;
+import functions.factory.LinkedListTabulatedFunctionFactory;
 import operations.TabulatedDifferentialOperator;
 
 import java.io.*;
@@ -16,9 +16,9 @@ public class LinkedListTabulatedFunctionSerialization {
             double[] xValues = {1.0, 2.0, 3.0, 4.0, 5.0};
             double[] yValues = {1.0, 4.0, 9.0, 16.0, 25.0};
 
-            LinkedListTabulateFunction function = new LinkedListTabulateFunction(xValues,yValues);
+            LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(xValues,yValues);
 
-            TabulatedDifferentialOperator differentialOperator =new TabulatedDifferentialOperator(new LinkedListTabulateFunctionFactory());
+            TabulatedDifferentialOperator differentialOperator =new TabulatedDifferentialOperator(new LinkedListTabulatedFunctionFactory());
 
             TabulatedFunction diffFunc = differentialOperator.derive(function);
             TabulatedFunction diffFunc2 = differentialOperator.derive(diffFunc);
