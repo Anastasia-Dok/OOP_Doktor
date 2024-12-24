@@ -74,45 +74,46 @@
 <h2>Дифференцирование функции</h2>
 <button onclick="history.back()">Назад</button>
 <div id="differentiationWindow" class="modal">
-    <div class ="flex-container">
         <div class="modal-content">
             <div class="content">
-                <div class="initial-function">
-                    <table id="initialFunctionTable">
-                        <thead>
-                        <tr><th colspan="2">Начальная Функция</th></tr>
-                        <tr>
-                            <th>X</th>
-                            <th>Y</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!-- Предполагается, что строки будут добавлены динамически -->
-                        </tbody>
-                    </table>
+                <div class ="flex-container">
+                        <div class="initial-function">
+                            <table id="initialFunctionTable">
+                                <thead>
+                                <tr><th colspan="2">Начальная Функция</th></tr>
+                                <tr>
+                                    <th>X</th>
+                                    <th>Y</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!-- Предполагается, что строки будут добавлены динамически -->
+                                </tbody>
+                            </table>
+                    </div>
+                    <div class="result-function">
+                        <table id="resultFunctionTable">
+                            <thead>
+                            <tr>
+                                <th>Результат дифференцирования</th>
+                            </tr>
+                            <tr>
+                                <th>dY/dX</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- Результат будет добавлен здесь -->
+                            </tbody>
+                        </table>
+
+                    </div>
                 </div>
                 <button onclick="window.location.href='index.html'">Создать из массивов</button>
                 <button onclick="window.location.href='CreateFromFunc.html'">Создать из другой функции</button>
                 <button onclick="uploadFunction('first')">Загрузить</button>
                 <button onclick="saveFunction('first')">Сохранить</button>
-                <div class="result-function">
-
-                    <table id="resultFunctionTable">
-                        <thead>
-                        <tr>
-                            <th>Результат дифференцирования</th>
-                        </tr>
-                        <tr>
-                            <th>dY/dX</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!-- Результат будет добавлен здесь -->
-                        </tbody>
-                    </table>
-                </div>
+                <button id="differentiateButton">Дифференцировать</button>
             </div>
-            <button id="differentiateButton">Дифференцировать</button>
         </div>
-    </div>
+
 </div>
