@@ -7,18 +7,32 @@
     <title>График</title>
 
     <style>
+        body {
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+           font-family: "Times New Roman", serif, Times;
+           background:
+                    url(https://i.pinimg.com/736x/a4/68/76/a468760429f10d1bd305a0e679e5c8d0.jpg)
+                   350px 950px;
+                   repeat-y; /* Повторять изображение только по вертикали */
+                    fixed; /* Зафиксировать фон */
+        }
     .container {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: repeat(1, 1fr);
     gap: 10px;
     padding: 10px;
-    font-family: Tahoma, sans-serif;
+    font-family: "Times New Roman", serif, Times;
     }
 
     #flis{
-    background-color: #ffe6f0;
-    border-radius: 25px;
+    background-color:rgba(0, 0, 0, 0);
+    border-radius: 5px;
     padding: 5px;
     height: 100%;
     min-height: 94vh;
@@ -33,27 +47,27 @@
     }
 
     #flis button{
-        font-family: Tahoma, sans-serif;
-        background-color: #ff66b3;
-        color: white;
+        font-family: "Times New Roman", serif, Times;
+        background-color:rgba(0, 0, 0, 0);
+        color: #800000;
         border: none;
-        border-radius: 25px;
+        border-radius: 5px;
         margin-bottom: 10px;
         width: 35%;
-        height: 45px;
+        height: 65px;
         font-weight: bold;
-        font-size: 15px;
+        font-size: 19px;
         text-align: center;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
 
     #flis button:hover {
-        background-color: #e45ba0;
+        background-color: #FFF0F5;
     }
 
     #flis button[disabled] {
-        background-color: #ecc2da; /* Серый фон для заблокированной кнопки */
+         background-color:rgba(0, 0, 0, 0); /* Серый фон для заблокированной кнопки */
         color: #ffffff; /* Тусклый цвет текста */
         cursor: not-allowed; /* Указатель меняется на запрещающий значок */
         opacity: 0.6; /* Прозрачность для эффекта */
@@ -61,7 +75,7 @@
     }
 
     #flis button[disabled]:hover {
-        background-color: #d89ecd;
+        background-color: #FFF0F5;
         color: #ffffff;
         border-color: #aaa;
     }
@@ -69,10 +83,10 @@
     #flis table {
         width: 55%; /* Занимает всю ширину родительского контейнера */
         border-spacing: 0; /* Убирает двойные линии между ячейками */
-        font-family: Tahoma, sans-serif;
+        font-family: "Times New Roman", serif, Times;
         margin: 0 auto;
         overflow: hidden;
-        border: none;
+        border: 2px solid #808080;
     }
 
     #flis th, td {
@@ -82,17 +96,17 @@
     }
 
     #flis th {
-        background-color: #ff66b3; /* Фон заголовка таблицы — розовый */
-        color: white; /* Белый текст в заголовке */
+        background-color:rgba(0, 0, 0, 0);
+        color: black;
         font-weight: bold; /* Жирный текст */
     }
 
     #flis tr:nth-child(even) {
-        background-color: #f2f2f2; /* Серый фон для четных строк */
+        background-color:rgba(0, 0, 0, 0); /* Серый фон для четных строк */
     }
 
     #flis tr:nth-child(odd) {
-        background-color: #fff; /* Белый фон для нечетных строк */
+        background-color:rgba(0, 0, 0, 0); /* Белый фон для нечетных строк */
     }
 
     #flis td:first-child {
@@ -103,22 +117,11 @@
         background-color: #f9c5f0; /* Слегка розовый цвет при наведении на строку */
     }
 
-    #flis thead th:first-child {
-        border-top-left-radius: 25px; /* Левый верхний угол */
-    }
-    #flis thead th:last-child {
-        border-top-right-radius: 25px; /* Правый верхний угол */
-    }
-    #flis tbody tr:last-child td:first-child {
-        border-bottom-left-radius: 25px; /* Левый нижний угол */
-    }
-    #flis tbody tr:last-child td:last-child {
-        border-bottom-right-radius: 25px; /* Правый нижний угол */
-    }
+
 
     #glamur{
-        background-color: #f4ffcc;
-        border-radius: 25px;
+        background-color:rgba(0, 0, 0, 0);
+        border-radius: 5px;
         padding: 5px;
         height: 100%;
         min-height: 94vh;
@@ -136,9 +139,9 @@
         width: 55%;
         height: 45px;
         border: none;
-        border-radius: 25px;
+        border-radius: 5px;
         background-color: white;
-        font-family: Tahoma, sans-serif;
+        font-family: "Times New Roman", serif, Times;
         font-size: 15px;
         padding-left: 20px;
         padding-right: 15px;
@@ -148,11 +151,11 @@
     }
 
     #glamur button{
-        font-family: Tahoma, sans-serif;
-        background-color: #ccff66;
-        color: #2e2e2e;
+        font-family: "Times New Roman", serif, Times;
+        background-color: #800000;
+        color: white;
         border: none;
-        border-radius: 25px;
+        border-radius: 5px;
         margin-bottom: 10px;
         width: 130px;
         height: 45px;
@@ -164,11 +167,11 @@
     }
 
     #glamur button:hover {
-        background-color: #c4e65a;
+        background-color: #A52A2A;
     }
 
     #glamur button[disabled] {
-        background-color: #c5d3a3; /* Серый фон для заблокированной кнопки */
+        background-color: #BC8F8F; /* Серый фон для заблокированной кнопки */
         color: #858585; /* Тусклый цвет текста */
         cursor: not-allowed; /* Указатель меняется на запрещающий значок */
         opacity: 0.6; /* Прозрачность для эффекта */
@@ -176,7 +179,7 @@
     }
 
     #glamur button[disabled]:hover {
-        background-color: #a7b682;
+        background-color: #D2B48C;
         color: #9c9c9c;
         border-color: #6c6c6c;
     }
@@ -189,7 +192,7 @@
         <button onclick="openModal('graph','graph')">Создать функцию</button>
         <button onclick="openSave('graph')" th:attr="disabled=${graphFunc == null}">Сохранить</button>
         <button onclick="openFunctionList('graph')">Загрузить</button>
-        <button onclick="openAnother('graph','graph')">Создать (интервал)</button>
+        <button onclick="openAnother('graph','graph')">Создать сложную функцию</button>
         <button onclick="openEdit('graph','graph')" th:attr="disabled=${graphFunc == null}">Вставить или изменить</button>
         <button onclick="openRemove('graph','graph')" th:attr="disabled=${graphFunc == null or countGraph == 2 }">Удалить точку</button>
         <div id="graphContent">
