@@ -1,4 +1,4 @@
-package database.controllers;
+package web.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
