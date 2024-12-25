@@ -1,1 +1,0 @@
-UPDATE public.functions SET name = 'UpdateFunc', x_from = 1, x_to = 0, count = 3 where id = 1;

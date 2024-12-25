@@ -1,1 +1,0 @@
-SELECT * FROM public.functions WHERE id = 1;

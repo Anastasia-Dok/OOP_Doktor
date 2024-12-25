@@ -1,7 +1,7 @@
 package database.controllers;
 
-import database.DTO.MathFunctionsDTO;
-import database.service.MathFunctionsService;
+import web.DTO.MathFunctionsDTO;
+import web.service.MathFunctionsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

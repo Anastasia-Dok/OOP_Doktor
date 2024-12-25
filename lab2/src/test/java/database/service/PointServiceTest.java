@@ -1,6 +1,6 @@
 package database.service;
 
-import database.DTO.PointDTO;
+import web.DTO.PointDTO;
 import database.entity.MathFunctionsEntity;
 import database.entity.PointEntity;
 import database.repositories.MathFunctionsRepository;
@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import web.service.PointService;
 
 import java.util.Arrays;
 import java.util.List;

@@ -5,9 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import database.DTO.MathFunctionsDTO;
+import web.DTO.MathFunctionsDTO;
 import database.entity.MathFunctionsEntity;
 import database.repositories.MathFunctionsRepository;
+import web.service.MathFunctionsService;
 
 import java.util.Collections;
 import java.util.List;

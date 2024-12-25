@@ -1,7 +1,7 @@
 package database.controllers;
 
-import database.DTO.PointDTO;
-import database.service.PointService;
+import web.DTO.PointDTO;
+import web.service.PointService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
