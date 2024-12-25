@@ -5,37 +5,45 @@
     <title>Операции</title>
     <style>
         body {
-            font-family: Tahoma, sans-serif;
+            font-family: "Times New Roman", serif, Times;
+            background:
+                    url(https://i.pinimg.com/736x/45/0d/09/450d097f42889ccc034feb3bcb1192f0.jpg)
+                   350px 950px;
+                   repeat-y; /* Повторять изображение только по вертикали */
+                    fixed; /* Зафиксировать фон */
+                    padding-right: 100px;
         }
         .container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(1, 1fr);
-            gap: 10px;
+            gap: 70px;
             padding: 10px;
-            font-family: Tahoma, sans-serif;
+            font-family: "Times New Roman", serif, Times;
         }
         #operand1Container{
-            background-color: #ffe6f0;
-            border-radius: 25px;
+            background-color: rgba(0, 0, 0, 0);
+            border-radius: 5px;
             padding: 5px;
             height: 100%;
             min-height: 94vh;
             text-align: center;
+            font-weight: 600;
+            border: 2px solid #808080;
         }
         #operand1Title{
             font-weight: bold;
             font-size: 27px;
-            font-family: Tahoma, sans-serif;
+            font-family: "Times New Roman", serif, Times;
             margin-bottom: 30px;
             margin-top: 50px;
         }
         #operand1Content button{
-            font-family: Tahoma, sans-serif;
-            background-color: #ff66b3;
+            font-family: "Times New Roman", serif, Times;
+            background-color: #000;
             color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 5px;
             margin-bottom: 10px;
             width: 55%;
             height: 45px;
@@ -47,30 +55,32 @@
         }
 
         #operand1Content button:hover {
-            background-color: #e45ba0;
+            background-color: #A9A9A9;
         }
 
         #operand2Container{
-            background-color: #ffe6f0;
-            border-radius: 25px;
+            background-color: rgba(0, 0, 0, 0);;
+            border-radius: 5px;
             padding: 5px;
             height: 100%;
             min-height: 94vh;
             text-align: center;
+            font-weight: 600;
+            border: 2px solid #808080;
         }
         #operand2Title{
             font-weight: bold;
             font-size: 27px;
-            font-family: Tahoma, sans-serif;
+            font-family: "Times New Roman", serif, Times;
             margin-bottom: 30px;
             margin-top: 50px;
         }
         #operand2Content button{
-            font-family: Tahoma, sans-serif;
-            background-color: #ff66b3;
+            font-family: "Times New Roman", serif, Times;
+            background-color: #000;
             color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 5px;
             margin-bottom: 10px;
             width: 55%;
             height: 45px;
@@ -82,11 +92,11 @@
         }
 
         #operand2Content button:hover {
-            background-color: #e45ba0;
+            background-color: #696969;
         }
 
         #operand1Content button[disabled] {
-            background-color: #cf8cb0; /* Серый фон для заблокированной кнопки */
+            background-color: #696969; /* Серый фон для заблокированной кнопки */
             color: #ededed; /* Тусклый цвет текста */
             cursor: not-allowed; /* Указатель меняется на запрещающий значок */
             opacity: 0.6; /* Прозрачность для эффекта */
@@ -94,7 +104,7 @@
         }
 
         #operand2Content button[disabled] {
-            background-color: #cf8cb0; /* Серый фон для заблокированной кнопки */
+            background-color: #696969; /* Серый фон для заблокированной кнопки */
             color: #ededed; /* Тусклый цвет текста */
             cursor: not-allowed; /* Указатель меняется на запрещающий значок */
             opacity: 0.6; /* Прозрачность для эффекта */
@@ -102,52 +112,55 @@
         }
 
         #operand1Content button[disabled]:hover {
-            background-color: #cf8cb0;
+            background-color: #A9A9A9;
             color: #ededed;
             border-color: #aaa;
         }
 
         #operand2Content button[disabled]:hover {
-            background-color: #cf8cb0;
+            background-color: #A9A9A9;
             color: #ededed;
             border-color: #aaa;
         }
 
         #resultContainer{
-            background-color: #ffe0b3;
-            border-radius: 25px;
+            background-color: rgba(0, 0, 0, 0);;
+            border-radius: 5px;
             height: 100%;
             min-height: 94vh;
             text-align: center;
+            font-weight: 600;
+            border: 2px solid #808080;
         }
 
         #result1Title{
             font-weight: bold;
             font-size: 27px;
-            font-family: Tahoma, sans-serif;
+            font-family: "Times New Roman", serif, Times;
             margin-bottom: 30px;
             margin-top: 55px;
         }
 
         #resultLabel{
-            font-family: Tahoma, sans-serif;
+            font-family: "Times New Roman", serif, Times;
             font-size: 17px;
             font-weight: bolder;
             float: left;
             margin-bottom: 10px;
             color: #2e2e2e;
-            margin-left: 107px;
+            margin-left: 100px;
         }
 
         #operation{
-            border-radius: 25px;
+            border-radius: 5px;
             border: none;
             width: 55%;
             height: 45px;
             margin-left: 5px;
             margin-right: 10px;
-            background-color: white;
-            font-family: Tahoma, sans-serif;
+            background-color: #708090;
+            color: #fff;
+            font-family: "Times New Roman", serif, Times;
             font-size: 15px;
             padding-left: 20px;
             padding-right: 15px;
@@ -166,12 +179,12 @@
         #resultButton{
             width: 55%;
             height: 45px;
-            background-color: #ff9d37;
+            background-color: #2F4F4F;
             color: #ffffff;
             font-weight: bold;
-            font-family: Tahoma, sans-serif;
+            font-family: "Times New Roman", serif, Times;
             font-size: 15px;
-            border-radius: 25px;
+            border-radius: 5px;
             border: none;
             text-align: center;
             cursor: pointer;
@@ -180,18 +193,18 @@
         }
 
         #resultButton:hover {
-            background-color: #df872d;
+            background-color: #708090;
         }
 
         #resultContent button{
             width: 55%;
             height: 45px;
-            background-color: #ff9d37;
+            background-color: #000;
             color: #ffffff;
             font-weight: bold;
-            font-family: Tahoma, sans-serif;
+            font-family: "Times New Roman", serif, Times;
             font-size: 15px;
-            border-radius: 25px;
+            border-radius: 5px;
             border: none;
             text-align: center;
             cursor: pointer;
@@ -199,12 +212,10 @@
             margin-bottom: 10px;
         }
 
-        #resultContent button:hover {
-            background-color: #df872d;
-        }
+
 
         #resultContent button[disabled] {
-            background-color: #a37556; /* Серый фон для заблокированной кнопки */
+            background-color: #696969; /* Серый фон для заблокированной кнопки */
             color: #ededed; /* Тусклый цвет текста */
             cursor: not-allowed; /* Указатель меняется на запрещающий значок */
             opacity: 0.6; /* Прозрачность для эффекта */
@@ -212,7 +223,7 @@
         }
 
         #resultContent button[disabled]:hover {
-            background-color: #a37556;
+            background-color: #A9A9A9;
             color: #ededed;
             border-color: #aaa;
         }
@@ -220,7 +231,7 @@
         #rosa table {
             width: 55%; /* Занимает всю ширину родительского контейнера */
             border-spacing: 0; /* Убирает двойные линии между ячейками */
-            font-family: Tahoma, sans-serif;
+            font-family: "Times New Roman", serif, Times;
             margin: 0 auto;
             overflow: hidden;
             border: none;
@@ -233,7 +244,7 @@
         }
 
         #rosa th {
-            background-color: #ff66b3; /* Фон заголовка таблицы — розовый */
+            background-color: #000; /* Фон заголовка таблицы — розовый */
             color: white; /* Белый текст в заголовке */
             font-weight: bold; /* Жирный текст */
         }
@@ -250,27 +261,12 @@
             text-align: center; /* Центровка первой колонки */
         }
 
-        #rosa table tr:hover {
-            background-color: #f9c5f0; /* Слегка розовый цвет при наведении на строку */
-        }
 
-        #rosa thead th:first-child {
-            border-top-left-radius: 25px; /* Левый верхний угол */
-        }
-        #rosa thead th:last-child {
-            border-top-right-radius: 25px; /* Правый верхний угол */
-        }
-        #rosa tbody tr:last-child td:first-child {
-            border-bottom-left-radius: 25px; /* Левый нижний угол */
-        }
-        #rosa tbody tr:last-child td:last-child {
-            border-bottom-right-radius: 25px; /* Правый нижний угол */
-        }
 
         #ora table {
             width: 55%; /* Занимает всю ширину родительского контейнера */
             border-spacing: 0; /* Убирает двойные линии между ячейками */
-            font-family: Tahoma, sans-serif;
+            font-family: "Times New Roman", serif, Times;
             margin: 0 auto;
             overflow: hidden;
             border: none;
@@ -283,7 +279,7 @@
         }
 
         #ora th {
-            background-color: #ff9933; /* Фон заголовка таблицы — розовый */
+            background-color: #000; /* Фон заголовка таблицы — розовый */
             color: white; /* Белый текст в заголовке */
             font-weight: bold; /* Жирный текст */
         }
@@ -300,25 +296,10 @@
             text-align: center; /* Центровка первой колонки */
         }
 
-        #ora table tr:hover {
-            background-color: #ffcc7f; /* Слегка розовый цвет при наведении на строку */
-        }
-
-        #ora thead th:first-child {
-            border-top-left-radius: 25px; /* Левый верхний угол */
-        }
-        #ora thead th:last-child {
-            border-top-right-radius: 25px; /* Правый верхний угол */
-        }
-        #ora tbody tr:last-child td:first-child {
-            border-bottom-left-radius: 25px; /* Левый нижний угол */
-        }
-        #ora tbody tr:last-child td:last-child {
-            border-bottom-right-radius: 25px; /* Правый нижний угол */
-        }
     </style>
 </head>
 <body>
+<button onclick="history.back()">Назад</button>
 <div class="container">
     <div id="operand1Container">
         <h3 id="operand1Title">Операнд 1</h3>

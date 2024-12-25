@@ -1,25 +1,32 @@
-body {
-    background-color: #f2c4e0;
-    display: flex; /* Для выравнивания контейнера по центру */
+ body {
+
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: Tahoma, sans-serif;
+   font-family: "Times New Roman", serif, Times;
+   background:
+                    url(https://i.pinimg.com/736x/52/d5/15/52d515a1c0da7d01556122c17b7b6f86.jpg)
+                   350px 950px;
+                   repeat-y; /* Повторять изображение только по вертикали */
+                    fixed; /* Зафиксировать фон */
+                    padding-right: 100px;
 }
 
-.registration-container {
+.login-container {
     position: relative;
-    background-color: #d9ff6b;
-    padding: 30px 40px; /* Внутренние отступы */
-    border-radius: 20px; /* Скругленные углы */
+
+    padding: 30px 40px;
+    border-radius: 20px;
+    color: #DEB887;
     text-align: center;
     width: 450px;
     height: 290px;
 }
 
 .registration-container h1 {
-    color: #2e2e2e;
+    color: #FFF8DC;
     font-size: 24px;
 }
 
@@ -31,8 +38,8 @@ body {
     margin-top: 5px;
     margin-right: 0; /* Внешние отступы сверху и снизу */
     border: none; /* Убираем рамку */
-    border-radius: 20px; /* Скругленные углы */
-    background-color: #ffffff; /* Белый фон */
+    border-radius: 4px; /* Скругленные углы */
+    background-color: #FFF8DC; /* Белый фон */
     font-size: 14px; /* Размер текста */
     box-sizing: border-box; /* Учет padding в ширине */
 }
@@ -42,8 +49,8 @@ body {
     margin-bottom: 15px;
     margin-right: 0; /* Внешние отступы сверху и снизу */
     border: none; /* Убираем рамку */
-    border-radius: 20px; /* Скругленные углы */
-    background-color: #ffffff; /* Белый фон */
+    border-radius: 4px; /* Скругленные углы */
+    background-color: #FFF8DC; /* Белый фон */
     font-size: 14px; /* Размер текста */
     box-sizing: border-box; /* Учет padding в ширине */
 }
@@ -54,19 +61,20 @@ body {
     width: 200px;
     height: 45px;
     padding: 10px; /* Внутренние отступы */
-    background-color: #2e2e2e; /* Темный фон */
-    color: #ffffff; /* Белый текст */
+    background-color: #8B4513; /* Темный фон */
+    color: #000; /* Белый текст */
     border: none; /* Убираем границу */
-    border-radius: 20px; /* Скругленные углы */
+    border-radius: 4px; /* Скругленные углы */
     font-size: 16px; /* Размер текста */
     font-weight: bold; /* Жирный текст */
     cursor: pointer; /* Курсор руки */
     transition: background-color 0.3s ease; /* Анимация при наведении */
+    font-family: "Times New Roman", serif, Times;
 }
 
 /* Смена цвета кнопки при наведении */
 .registration-container button:hover {
-    background-color: #555555; /* Серый цвет */
+    background-color: #D2B48C; /* Серый цвет */
 }
 
 /* Стили для текста меток (label) */
@@ -76,4 +84,5 @@ body {
     font-size: 14px;
     margin-bottom: 5px; /* Отступ от метки до поля */
     color: #2e2e2e; /* Темный цвет текста */
+    font-family: "Times New Roman", serif, Times;
 }

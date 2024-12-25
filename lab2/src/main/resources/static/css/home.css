@@ -1,3 +1,8 @@
+
+body{
+background-color:#FFF0F5
+
+}
 .main-container {
     display: flex;
     flex-direction: column;
@@ -8,248 +13,280 @@
 /* Верхняя строка */
 .top-row {
     display: grid;
-    grid-template-columns: 35% 35% 30%; /* Соотношение ширины столбцов */
-    gap: 8px;
-    grid-template-rows: 47vh;
+    grid-template-columns: 25% 30% 30%; /* Соотношение ширины столбцов */
+    gap: 48px;
+    grid-template-rows: 37vh;
 }
 
 /* Нижняя строка */
 .bottom-row {
     display: grid;
-    grid-template-columns: 40% 30% 30%; /* Другое соотношение ширины столбцов */
-    gap: 8px;
-    grid-template-rows: 47vh;
+    grid-template-columns: 25% 30% 30%; /* Другое соотношение ширины столбцов */
+    gap: 48px;
+    grid-template-rows: 37vh;
 }
 
 /* Общие стили для ячеек */
 .top-row > div, .bottom-row > div {
     position: relative;
-    background-color: #f0f0f0;
+    background-color: #98FB98;
     padding: 8px;
-    text-align: left;
-    border-radius: 10px;
+    text-align: center;
+    border-radius: 5px;
 }
 
 /* Секция "Базовые операции над функциями" */
 #basic-operations {
-    background-color: #ffe6f0;
-    padding-left: 40px;
-    text-align: left;
-    padding-top: 70px;
-    font-family: Tahoma, sans-serif;
-    font-size: 30px;
+
+    padding-left: 14px;
+    text-align: center;
+    padding-top: 40px;
+    font-family: "Times New Roman", serif, Times;
+    font-size:30px;
     font-weight: bold;
-    border-radius: 25px;
+    border-radius: 5px;
+    background:
+    url(https://i.pinimg.com/736x/45/0d/09/450d097f42889ccc034feb3bcb1192f0.jpg)
+                       250px 450px;
+                       no-repeat; /* Повторять изображение только по вертикали */
+                        fixed; /* Зафиксировать фон */
+                        padding-right: 30px;
 
 }
 
 #basic-operations button {
-    background-color: #ff66b3;
-    color: white;
-    width: 150px;
-    height: 50px;
+    background-color: rgba(0, 0, 0, 0);
+    color: black;
+    width: 200px;
+    height: 150px;
     font-size: 20px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
+    font-weight: 600;
+    padding: 30px 20px;
+    border: 2px solid #808080;
+    border-radius: 5px;
     cursor: pointer;
-    position: absolute;         /* Абсолютное позиционирование */
+    position: center;         /* Абсолютное позиционирование */
     bottom: 70px;               /* Отступ снизу */
-    right: 70px; /* Отступ справа */
+    right: 40px; /* Отступ справа */
     transition: background-color 0.3s ease;
 }
 
 #basic-operations button:hover {
-    background-color: #e45ba0;
+    background-color: #DCDCDC;
 }
 
 /* Секция "Создание сложной функции" */
 #complex-function {
-    background-color: #ffe0b3;
-    padding-left: 40px;
-    text-align: left;
-    padding-top: 70px;
-    font-family: Tahoma, sans-serif;
-    font-size: 30px;
-    font-weight: bold;
-    border-radius: 25px;
+
+   padding-left: 14px;
+       text-align: center;
+       padding-top: 40px;
+       font-family: "Times New Roman", serif, Times;
+       font-size:30px;
+       font-weight: bold;
+       border-radius: 5px;
+       background:
+       url(https://i.pinimg.com/736x/6f/bd/98/6fbd983ef57ed88a547b2f063c7bd677.jpg)
+                          250px 450px;
+                          no-repeat; /* Повторять изображение только по вертикали */
+                           fixed; /* Зафиксировать фон */
+                           padding-right: 30px;
+
+
 }
 
 #complex-function button {
-    background-color: #ff9933;
-    color: white;
-    width: 150px;
-    height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    position: absolute;         /* Абсолютное позиционирование */
-    bottom: 70px;               /* Отступ снизу */
-    right: 70px;
-    transition: background-color 0.3s ease;
+    background-color:rgba(0, 0, 0, 0);
+    color: black;
+        width: 200px;
+        height: 150px;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 30px 20px;
+        border: 2px solid #808080;
+        border-radius: 5px;
+        cursor: pointer;
+        position: center;         /* Абсолютное позиционирование */
+        bottom: 70px;               /* Отступ снизу */
+        right: 40px; /* Отступ справа */
+        transition: background-color 0.3s ease;
 }
 
 #complex-function button:hover {
-    background-color: #df872d;
+    background-color: #FFE4E1;
 }
 
 /* Секция "Построение графика" */
 #plot-graph {
-    background-color: #ffe6f0;
-    padding-left: 40px;
-    text-align: left;
-    padding-top: 70px;
-    font-family: Tahoma, sans-serif;
-    font-size: 30px;
+
+    padding-left: 14px;
+    text-align: center;
+    padding-top: 40px;
+    font-family: "Times New Roman", serif, Times;
+    font-size:30px;
     font-weight: bold;
-    border-radius: 25px;
+    border-radius: 5px;
+    background:
+    url(https://i.pinimg.com/736x/a4/68/76/a468760429f10d1bd305a0e679e5c8d0.jpg)
+                       250px 450px;
+                       no-repeat; /* Повторять изображение только по вертикали */
+                        fixed; /* Зафиксировать фон */
+                        padding-right: 30px;
+
 }
 
 #plot-graph button {
-    background-color: #ff66b3;
-    color: white;
-    width: 150px;
-    height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    position: absolute;         /* Абсолютное позиционирование */
-    bottom: 70px;               /* Отступ снизу */
-    right: 70px;
-    transition: background-color 0.3s ease;
+    background-color: rgba(0, 0, 0, 0);
+    color: black;
+        width: 200px;
+        height: 150px;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 30px 20px;
+        border: 2px solid #808080;
+        border-radius: 5px;
+        cursor: pointer;
+        position: center;         /* Абсолютное позиционирование */
+        bottom: 70px;               /* Отступ снизу */
+        right: 40px; /* Отступ справа */
+        transition: background-color 0.3s ease;
 }
 
 #plot-graph button:hover {
-    background-color: #e45ba0;
+    background-color: #B0C4DE;
 }
 
 /* Секция "Дифференцирование функции" */
 #differentiate-function {
-    background-color: #f4ffcc;
-    padding-left: 40px;
-    text-align: left;
-    padding-top: 70px;
-    font-family: Tahoma, sans-serif;
-    font-size: 30px;
-    font-weight: bold;
-    border-radius: 25px;
+          padding-left: 14px;
+           text-align: center;
+           padding-top: 40px;
+           font-family: "Times New Roman", serif, Times;
+           font-weight: bold;
+           border-radius: 5px;
+           background:
+           url(https://i.pinimg.com/736x/7b/0f/fc/7b0ffcfc7d566ae0bb0fc43a54a10af5.jpg)
+           50px 650px;
+           no-repeat; /* Повторять изображение только по вертикали */
+           fixed; /* Зафиксировать фон */
+
 }
 
-#differentiate-function button {
-    background-color: #ccff66;
-    color: black;
-    width: 150px;
-    height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    position: absolute;         /* Абсолютное позиционирование */
-    bottom: 70px;               /* Отступ снизу */
-    right: 70px;
-    transition: background-color 0.3s ease;
+#differentiate-function button
+{
+    background-color: rgba(0, 0, 0, 0);
+        color: black;
+        width: 200px;
+        height: 150px;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 30px 20px;
+        border: 2px solid #696969;
+        border-radius: 5px;
+        cursor: pointer;
+        position: center;         /* Абсолютное позиционирование */
+        bottom: 70px;               /* Отступ снизу */
+        right: 40px; /* Отступ справа */
+        transition: background-color 0.3s ease;
 }
 
 #differentiate-function button:hover {
-    background-color: #c4e65a;
+    background-color: #FFFAF0;
 }
 
 /* Секция "Вычислить интеграл" */
 #compute-integral {
-    background-color: #ffe6f0;
-    padding-left: 40px;
-    text-align: left;
-    padding-top: 70px;
-    font-family: Tahoma, sans-serif;
-    font-size: 30px;
-    font-weight: bold;
-    border-radius: 25px;
+ padding-left: 14px;
+           text-align: center;
+           padding-top: 40px;
+           font-family: "Times New Roman", serif, Times;
+           font-weight: bold;
+           border-radius: 5px;
+           background:
+           url(https://i.pinimg.com/736x/36/44/33/364433eef6aa664cb5d23c132bd3260d.jpg)
+           390px 650px;
+           no-repeat; /* Повторять изображение только по вертикали */
+           fixed; /* Зафиксировать фон */
 }
 
 #compute-integral button {
-    background-color: #ff66b3;
-    color: white;
-    width: 150px;
-    height: 50px;
+    background-color: rgba(0, 0, 0, 0);
+    color: black;
+    width: 200px;
+    height: 150px;
     font-size: 20px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
+    font-weight: 600;
+    padding: 30px 20px;
+    border: 2px solid #808080;
+    border-radius: 5px;
     cursor: pointer;
-    position: absolute;         /* Абсолютное позиционирование */
+    position: center;         /* Абсолютное позиционирование */
     bottom: 70px;               /* Отступ снизу */
-    right: 70px;
+    right: 40px; /* Отступ справа */
     transition: background-color 0.3s ease;
 }
 
 #compute-integral button:hover {
-    background-color: #e45ba0;
+    background-color: #B0E0E6;
 }
 
 /* Секция "Настройки фабрики" */
 #factory-settings {
-    background-color: #f4ffcc;
-    padding-left: 40px;
-    text-align: left;
-    padding-top: 70px;
-    font-family: Tahoma, sans-serif;
-    font-size: 30px;
-    font-weight: bold;
-    border-radius: 25px;
+padding-left: 14px;
+           text-align: center;
+           padding-top: 40px;
+           font-family: "Times New Roman", serif, Times;
+           font-weight: bold;
+           border-radius: 5px;
+           background:
+           url(https://i.pinimg.com/736x/3b/08/7c/3b087c28029c9ff607494a19c1173984.jpg)
+           50px 650px;
+           no-repeat; /* Повторять изображение только по вертикали */
+           fixed; /* Зафиксировать фон */
 }
 
 #factory-settings button {
-    background-color: #ccff66;
-    color: black;
-    width: 150px;
-    height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    position: absolute;         /* Абсолютное позиционирование */
-    bottom: 70px;               /* Отступ снизу */
-    right: 70px;
-    transition: background-color 0.3s ease;
+    background-color: rgba(0, 0, 0, 0);
+   color: black;
+       width: 200px;
+       height: 150px;
+       font-size: 20px;
+       font-weight: 600;
+       padding: 30px 20px;
+       border: 2px solid #808080;
+       border-radius: 5px;
+       cursor: pointer;
+       position: center;         /* Абсолютное позиционирование */
+       bottom: 70px;               /* Отступ снизу */
+       right: 40px; /* Отступ справа */
+       transition: background-color 0.3s ease;
 }
 
 #factory-settings button:hover {
-    background-color: #c4e65a;
+    background-color: #FDF5E6;
 }
 
 #settingsModal{
-    background-color: #2e2e2e;
-    border-radius: 25px;
-    border: none;
+    background-color: #DCDCDC;
+    border-radius: 5px;
+    border: 2px solid #8B4513;
     width: 680px;
     height: 40px;
     font-weight: bold;
     font-size: 16px;
-    font-family: Tahoma, sans-serif;
-    color: #ccff66;
+    font-family: "Times New Roman", serif, Times;
+    color: #000;
 }
 
 #factoryType{
     width: 250px;
     height: 40px;
-    border-radius: 25px;
+    border-radius: 15px;
     margin-left: 5px;
     margin-right: 10px;
-    border: none;
-    background-color: #f0ffd4; /* Светло-зеленый фон */
-    font-family: Tahoma, sans-serif;
+    border: 2px solid #8B4513;
+    background-color: #FFE4B5;
+    font-family: "Times New Roman", serif, Times;
     font-size: 14px;
     padding-left: 10px;
     outline: none; /* Убираем обводку при фокусе */
@@ -267,12 +304,12 @@
 #submit{
     width: 110px;
     height: 40px;
-    font-family: Tahoma, sans-serif;
+    font-family: "Times New Roman", serif, Times;
     font-weight: bold;
     font-size: 14px;
     border-radius: 25px;
-    background-color: #ccff66;
-    border: none;
+    background-color: #FFE4B5;
+    border: 2px solid #8B4513;
     margin-right: 5px;
     color: black;
     cursor: pointer;
@@ -280,23 +317,23 @@
 }
 
 #submit:hover {
-    background-color: #c4e65a;
+    background-color: #D2B48C;
 }
 
 #button{
     width: 110px;
     height: 40px;
-    font-family: Tahoma, sans-serif;
+    font-family: "Times New Roman", serif, Times;
     font-weight: bold;
     font-size: 14px;
     border-radius: 25px;
-    background-color: #ff66b3;
-    border: none;
-    color: white;
+    background-color: #FFE4B5;
+    border: 2px solid #8B4513;
+    color: black;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 #button:hover {
-    background-color: #e45ba0;
+    background-color: #D2B48C;
 }
