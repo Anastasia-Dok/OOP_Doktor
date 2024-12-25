@@ -26,7 +26,6 @@ public class SecurityConfig {
                 .csrf().disable() // Для разработки. В продакшене лучше включить!
                 .cors().disable()
                 .authorizeRequests()
-                //TODO запросы убрать
                 .antMatchers("/login", "/register","/css/**","/registere").permitAll() // Разрешить доступ без аутентификации
                 .anyRequest().authenticated() // Остальные запросы требуют аутентификации
                 .and()
