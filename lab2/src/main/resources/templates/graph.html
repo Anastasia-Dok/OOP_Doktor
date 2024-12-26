@@ -194,6 +194,7 @@
         <button onclick="openAnother('graph','graph')">Создать сложную функцию</button>
         <button onclick="openEdit('graph','graph')" th:attr="disabled=${graphFunc == null}">Вставить или изменить</button>
         <button onclick="openRemove('graph','graph')" th:attr="disabled=${graphFunc == null or countGraph == 2 }">Удалить точку</button>
+        <a href="http://localhost:8080/" class="btn btn-primary">Назад</a>
         <div id="graphContent">
             <div th:if="${graphFunc != null}">
                 <h4>Таблица функции:</h4>
